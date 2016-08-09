@@ -12,6 +12,8 @@ var Board = function(width, height) {
   this.prevX = 0;
   this.prevY = 0;
 
+  this.initialized = false;
+
   // Methods
   this._generate = function() {
     var tempBoard = [];
@@ -29,6 +31,7 @@ var Board = function(width, height) {
   // Fills the arrays with 0s except for {x,y} which is filled with a 1. 
   // By default, x = 0 & y = 0
   this.init = function(x, y) { 
+    this.initialized = true;
     if(typeof x === 'undefined' || typeof y === 'undefined') {
       console.log('Notice: x: was ' + x + ' - now 0 (init())');
       console.log('Notice: y: was ' + y + ' - now 0 (init())');
@@ -44,6 +47,10 @@ var Board = function(width, height) {
 
   // @amount{OPTIONAL}: default 1.
   this.go = function(direction, amount) {
+    if(!this.initialized) {
+      console.log('Error: Board not initialized');
+      return false;
+    }
     if(typeof amount === 'undefined') {
       var amount = 1;
     }
@@ -55,11 +62,11 @@ var Board = function(width, height) {
     }
 
     if(typeof directions[direction] === 'undefined') {
-      console.log("Error: Can't go " + direction + '. (go())');
+      console.log("Error: Can't go " + direction + '. (go)');
       return false;
     } else {
       if(this._safelyGo(directions[direction])) {
-        console.log('Notice: Went ' + direction + '. (go())')
+        console.log('Notice: Went ' + direction + '. (go)')
         return true;
       }
     }
@@ -80,19 +87,19 @@ var Board = function(width, height) {
     // Check for array overflows
     // x overflows
     if(newX > maxX || newX < 0) {
-      console.log('Error: X overflow (_safelyGo())');
+      console.log('Error: X overflow (safelyGo)');
       err = true;
     }
     // y overflows
     if(newY > maxY || newY < 0) {
-      console.log('Error: Y overflow (_safelyGo())');
+      console.log('Error: Y overflow (safelyGo)');
       err = true;
     }
     // if everything ok, proceed with moving the 1.
     if(!err) {
       console.log('Notice: went success. new coordinates: {'
-        + newX + '; ' + newY +
-      '} (_safelyGo())');
+        + newX + ',' + newY +
+      '} (_safelyGo)');
       // update board 'state'
       this.prevX = this.x;
       this.prevY = this.y;
