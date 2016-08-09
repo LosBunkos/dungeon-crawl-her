@@ -11,5 +11,15 @@
   <script type="text/javascript" src='board.js'></script>
   <script type="text/javascript" src='player.js'></script>
   <script type="text/javascript" src='ui.js'></script>
+  <script type="text/javascript" src='keyboard.js'></script>
+
+  <script>
+    // Just for testing purposes
+    var board = new Board(25);
+    board.init();
+    ui = new UI(board);
+    ui.initBoard();
+    handleClicks();
+  </script>
 </body>
 </html>
