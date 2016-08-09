@@ -33,12 +33,12 @@ var Board = function(width, height) {
   this.init = function(x, y) { 
     this.initialized = true;
     if(typeof x === 'undefined' || typeof y === 'undefined') {
-      console.log('Notice: x: was ' + x + ' - now 0 (init())');
-      console.log('Notice: y: was ' + y + ' - now 0 (init())');
-      console.log('Notice: Board initialized.');
       var x = 0;
       var y = 0;
     }
+    console.log('Notice: Board initialized:\n\t\thead at {' +
+                 x + ',' + y + '}.');
+
     this.board = this._generate();
     this.board[y][x] = 1;
     this.x = x;
