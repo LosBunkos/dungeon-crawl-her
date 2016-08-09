@@ -1,0 +1,29 @@
+{
+  "name": "crawl-her",
+  "version": "0.0.1",
+  "description": "A dungeon crawler written with js",
+  "main": "main.js",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LosBunkos/dungeon-crawl-her.git"
+  },
+  "keywords": [
+    "game",
+    "dungeon",
+    "crawler"
+  ],
+  "author": "Nadav, Tomer, Vova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LosBunkos/dungeon-crawl-her/issues"
+  },
+  "homepage": "https://github.com/LosBunkos/dungeon-crawl-her#readme"
+}
