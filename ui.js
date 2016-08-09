@@ -5,9 +5,9 @@ var UI = function(board) {
   // 3. render board changes efficiently
   // 4. better solution for divtemplate. 
   //    handlebars? maybe not
-  // 5. do something with 'type' 
-  // 
-  // 
+  // 5. do something with 'type' in initBoard.
+  // 6. When player moves, actually change previous div's
+  //    style to actual previous style, not default.
   // 
   // 
   // 
@@ -16,6 +16,7 @@ var UI = function(board) {
   // Where all the divs go:
   this.$boardContainer = $('#board');
   this.playerColor = 'black';
+  this.defaultColor = 'white';
 
   this.divTemp = function(x, y, type) {
     // keep type to a short string for performance
@@ -54,7 +55,19 @@ var UI = function(board) {
     // and we only change the 'resolution' aka num of divs
     $('.square').css('width',((100 / board.width) + '%'));
     $('.square').css('height',((100 / board.height) + '%'));
-
-
   }
+
+  // Temporary Styling below
+  this.renderBoardChanges = function() {
+    var $current = $('[data-x="' + board.x + 
+                   '"][data-y="' + board.y + 
+                   '"]');
+    var $previous = $('[data-x="' + board.prevX + 
+                    '"][data-y="' + board.prevY + 
+                    '"]');
+    
+    $current.css('background-color', this.playerColor);
+    $previous.css('background-color', this.defaultColor);
+  }
+
 }
