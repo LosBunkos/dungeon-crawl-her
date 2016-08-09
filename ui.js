@@ -65,7 +65,7 @@ var UI = function(board) {
     var $previous = $('[data-x="' + board.prevX + 
                     '"][data-y="' + board.prevY + 
                     '"]');
-    
+
     $current.css('background-color', this.playerColor);
     $previous.css('background-color', this.defaultColor);
   }
