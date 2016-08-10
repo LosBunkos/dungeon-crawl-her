@@ -31,25 +31,18 @@ var Board = function(width, height) {
   // Fills the arrays with 0s except for {x,y} which is filled with a 1. 
   // By default, x = 0 & y = 0
   this.init = function(x, y) { 
-    console.time('board.init');
     this.initialized = true;
     if(typeof x === 'undefined' || typeof y === 'undefined') {
       var x = 0;
       var y = 0;
     }
-    // Neat console handling
-    console.group('init');
-    console.info('Notice: Board initialized');
-    console.info('Head at {' + x + ',' + y + '}.');
-    console.info('Size:', width, 'x', height, '(' + (height * width) + ' divs)');
-    console.groupEnd('init');
-    console.log(''); // spacing
+    console.log('Notice: Board initialized:\n\t\thead at {' +
+                 x + ',' + y + '}.');
 
     this.board = this._generate();
     this.board[y][x] = 1;
     this.x = x;
     this.y = y;
-    console.timeEnd('board.init');
   }
 
   // @amount{OPTIONAL}: default 1.
@@ -69,11 +62,11 @@ var Board = function(width, height) {
     }
 
     if(typeof directions[direction] === 'undefined') {
-      console.error("Error: Can't go " + direction + '. (go)');
+      console.log("Error: Can't go " + direction + '. (go)');
       return false;
     } else {
       if(this._safelyGo(directions[direction])) {
-        console.info('Notice: Went ' + direction + '. (go)')
+        console.log('Notice: Went ' + direction + '. (go)')
         return true;
       }
     }
@@ -94,17 +87,17 @@ var Board = function(width, height) {
     // Check for array overflows
     // x overflows
     if(newX > maxX || newX < 0) {
-      console.log('Warning: X overflow (safelyGo)');
+      console.log('Error: X overflow (safelyGo)');
       err = true;
     }
     // y overflows
     if(newY > maxY || newY < 0) {
-      console.warn('Warning: Y overflow (safelyGo)');
+      console.log('Error: Y overflow (safelyGo)');
       err = true;
     }
     // if everything ok, proceed with moving the 1.
     if(!err) {
-      console.info('Notice: went success. new coordinates: {'
+      console.log('Notice: went success. new coordinates: {'
         + newX + ',' + newY +
       '} (_safelyGo)');
       // update board 'state'

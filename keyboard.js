@@ -8,7 +8,7 @@ handleClicks = function() {
   var move;
   $(document).keypress(function(e) {
     move = String.fromCharCode(e.which);
-    console.info('Notice: got keystroke: ' + move + ' (keyboard)');
+    console.log('Notice: got keystroke: ' + move + ' (keyboard)');
     if(ui.board.go(keyToDirection[move])) {
       ui.renderBoardChanges();
     }
