@@ -3,4 +3,5 @@ var Player = function(name, hp) {
   this.location = {x: 0, y: 0};
   this.maxHP = hp || 10;
   this.HP = this.maxHP;
+
 }

@@ -33,6 +33,7 @@ var UI = function(board) {
 
 
   this.initBoard = function() {
+    console.time('ui.initBoard');
     //  | this improves performance
     //  | because we only need to access
     //  v the DOM once.
@@ -59,10 +60,13 @@ var UI = function(board) {
     // and we only change the 'resolution' aka num of divs
     $('.square').css('width',((100 / this.board.width) + '%'));
     $('.square').css('height',((100 / this.board.height) + '%'));
+
+    console.timeEnd('ui.initBoard');
   }
 
   // Temporary Styling below
   this.renderBoardChanges = function() {
+    console.time('ui.renderBoardChanges');
     var $current = $('[data-x="' + this.board.x + 
                    '"][data-y="' + this.board.y + 
                    '"]');
@@ -72,6 +76,8 @@ var UI = function(board) {
 
     $current.css('background-color', this.playerColor);
     $previous.css('background-color', this.defaultColor);
+    
+    console.timeEnd('ui.renderBoardChanges');
   }
 
 }
