@@ -15,9 +15,10 @@
 
   <script>
     // Just for testing purposes
+    "use strict";
     var board = new Board(25);
     board.init();
-    ui = new UI(board);
+    var ui = new UI(board);
     ui.initBoard();
     handleClicks();
   </script>

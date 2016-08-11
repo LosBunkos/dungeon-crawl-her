@@ -1,12 +1,11 @@
 var UI = function(board) {
   // TODO:
-  // 1. Render Board
-  // 2. Render Status
-  // 3. render board changes efficiently
-  // 4. better solution for divtemplate. 
+  // 0. DEPRECATE THIS AND MOVE TO 3.JS
+  // 1. render board changes efficiently
+  // 2. better solution for divtemplate. 
   //    handlebars? maybe not
-  // 5. do something with 'type' in initBoard.
-  // 6. When player moves, actually change previous div's
+  // 3. do something with 'type' in initBoard.
+  // 4. When player moves, actually change previous div's
   //    style to actual previous style, not default.
   // 
   // 

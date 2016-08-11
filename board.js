@@ -27,6 +27,12 @@ var Board = function(width, height) {
     return tempBoard;
   }
 
+  this._genObjects = function() {
+    this.gameObjs.each(function(obj) {
+      
+    })
+  }
+
   // Init board, with [(0,0) (default) OR (x,y)] = 1 
   // Fills the arrays with 0s except for {x,y} which is filled with a 1. 
   // By default, x = 0 & y = 0
@@ -41,7 +47,7 @@ var Board = function(width, height) {
     console.group('init');
     console.info('Notice: Board initialized');
     console.info('Head at {' + x + ',' + y + '}.');
-    console.info('Size:', width, 'x', height, '(' + (height * width) + ' divs)');
+    console.info('Size:', width, 'x', height, '(' + (height * width) + ' divs)\n');
     console.groupEnd('init');
     console.log(''); // spacing
 
