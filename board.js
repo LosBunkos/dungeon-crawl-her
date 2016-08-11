@@ -88,13 +88,13 @@ var Board = function(width, height) {
     var newX = currX + dx;
     var newY = currY + dy;
     var maxX = this.width - 1; // Max defined array index ()
-    var maxY = this.width - 1; // ^
+    var maxY = this.height - 1; // ^
     var err = false;
 
     // Check for array overflows
     // x overflows
     if(newX > maxX || newX < 0) {
-      console.log('Warning: X overflow (safelyGo)');
+      console.warn('Warning: X overflow (safelyGo)');
       err = true;
     }
     // y overflows

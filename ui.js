@@ -58,6 +58,10 @@ var UI = function(board) {
 
     // Make it so the container has a set size,
     // and we only change the 'resolution' aka num of divs
+    var aspectRatio = board.width / board.height;
+    // Hardcoded, to test
+    $('#board').css('width', 600 * aspectRatio);
+    // $('#board').css('height',600 / aspectRatio);
     $('.square').css('width',((100 / this.board.width) + '%'));
     $('.square').css('height',((100 / this.board.height) + '%'));
 

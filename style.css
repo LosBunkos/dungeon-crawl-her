@@ -5,10 +5,12 @@ div .square {
   display: inline-block;
   float: left;
   background-color: white;
+  border-radius: 12px;
 }
 
 #board {
   width: 600px;
   height: 600px;
   border: 1px solid black;
+  border-radius: 12px;
 }
