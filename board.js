@@ -123,13 +123,13 @@ var Board = function(width, height) {
     // if everything ok, proceed with moving the obj.
     if(!err) {
       console.info('Notice:', id, ': went success. new coordinates: {'
-        + newX + ',' + newY +
+        + newPos.x + ',' + newPos.y +
       '} (_safelyGo)');
       // update board 'state'
       obj.prevPos = currPos;
       obj.pos = newPos;
       this.board[obj.prevPos.y][obj.prevPos.y] = 0;
-      this.board[obj.pos.y][obj.pos.x] = type;
+      this.board[obj.pos.y][obj.pos.x] = obj.type;
     }
     
     return !err;

@@ -3,7 +3,7 @@ var gameObj = function(board, pos) {
   this.pos = pos;
   this.type = 2;
   this.go = function(direction) {
-    board.go(this.direction);
+    board.go(this, direction);
   }
   // Methods
   // this.autoAct = function() {};
