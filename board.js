@@ -11,7 +11,7 @@ var Board = function(width, height) {
   this.y = 0;
   this.prevX = 0;
   this.prevY = 0;
-
+  this.gameObjs
   this.initialized = false;
 
   // Methods
@@ -31,17 +31,16 @@ var Board = function(width, height) {
     this.gameObjs.push(obj);
     // give the obj a unique ID based on its position
     // in the gameObjs arr:
-    obj.id = this.gameObj.length - 1;
+    obj.id = this.gameObjs.length - 1;
   }
 
 
-  this.addAllObjsToArr = function() {
+  this.addAllObjsToBoard = function() {
     this.gameObjs.each(function(obj) {
-      // Render all gameObjects to board
+      // Render all gameObjects to board arr
       this.board[obj.pos.y][obj.pos.x] = obj.type;
     })
   }
-
 
   // Init board, with [(0,0) (default) OR (x,y)] = 1 
   // Fills the arrays with 0s except for {x,y} which is filled with a 1. 
@@ -62,16 +61,14 @@ var Board = function(width, height) {
     console.log(''); // spacing
 
     this.board = this._generate();
-    this.board[y][x] = 1;
-    this.x = x;
-    this.y = y;
+    this.addAllObjsToBoard();
     console.timeEnd('board.init');
   }
 
   // @amount{OPTIONAL}: default 1.
-  this.go = function(direction, amount) {
+  this.go = function(obj, direction, amount) {
     if(!this.initialized) {
-      console.log('Error: Board not initialized');
+      console.error('Error: Board not initialized!');
       return false;
     }
     if(typeof amount === 'undefined') {
@@ -88,48 +85,54 @@ var Board = function(width, height) {
       console.error("Error: Can't go " + direction + '. (go)');
       return false;
     } else {
-      if(this._safelyGo(directions[direction])) {
+      if (obj.id === 'undefined') {
+        console.error(obj)
+        console.error("object id undefined (go)");
+      }
+      // Notice: we're giving _safelyGo() the *id*.
+      if(this._safelyGo(obj.id, directions[direction])) {
         console.info('Notice: Went ' + direction + '. (go)')
         return true;
       }
     }
   }
 
-  this._safelyGo = function(obj) {
-    // The following block is mainly here to make the code after it more readable.
-    var currX = this.x;
-    var currY = this.y;
-    var dx = obj.x;
-    var dy = obj.y;
-    var newX = currX + dx;
-    var newY = currY + dy;
-    var maxX = this.width - 1; // Max defined array index ()
-    var maxY = this.height - 1; // ^
+  this._safelyGo = function(id, delta) {
+    // obj is the gameObjects to move
+    var obj = this.gameObjs[id];
     var err = false;
+
+    var currPos = {x: obj.pos.x, 
+                   y: obj.pos.y};
+
+    var newPos =  {x: currPos.x + delta.x,
+                   y: currPos.y + delta.y};
+
+    var maxPos = {x: this.width - 1,
+                  y: this.height - 1};
+
 
     // Check for array overflows
     // x overflows
-    if(newX > maxX || newX < 0) {
-      console.warn('Warning: X overflow (safelyGo)');
+    if(newPos.x > maxPos.x || newPos.x < 0) {
+      console.warn('Warning:', id, ': X overflow (safelyGo)');
       err = true;
     }
     // y overflows
-    if(newY > maxY || newY < 0) {
-      console.warn('Warning: Y overflow (safelyGo)');
+    if(newPos.y > maxPos.y || newPos.y < 0) {
+      console.warn('Warning:', id, ': Y overflow (safelyGo)');
       err = true;
     }
-    // if everything ok, proceed with moving the 1.
+    // if everything ok, proceed with moving the obj.
     if(!err) {
-      console.info('Notice: went success. new coordinates: {'
+      console.info('Notice:', id, ': went success. new coordinates: {'
         + newX + ',' + newY +
       '} (_safelyGo)');
       // update board 'state'
-      this.prevX = this.x;
-      this.prevY = this.y;
-      this.x = newX;
-      this.y = newY;
-      this.board[currY][currX] = 0;
-      this.board[newY][newX] = 1;
+      obj.prevPos = currPos;
+      obj.pos = newPos;
+      this.board[obj.prevPos.y][obj.prevPos.y] = 0;
+      this.board[obj.pos.y][obj.pos.x] = type;
     }
     
     return !err;
