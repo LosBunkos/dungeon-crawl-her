@@ -27,11 +27,21 @@ var Board = function(width, height) {
     return tempBoard;
   }
 
-  this._genObjects = function() {
+  this.addObj = function(obj) {
+    this.gameObjs.push(obj);
+    // give the obj a unique ID based on its position
+    // in the gameObjs arr:
+    obj.id = this.gameObj.length - 1;
+  }
+
+
+  this.addAllObjsToArr = function() {
     this.gameObjs.each(function(obj) {
-      
+      // Render all gameObjects to board
+      this.board[obj.pos.y][obj.pos.x] = obj.type;
     })
   }
+
 
   // Init board, with [(0,0) (default) OR (x,y)] = 1 
   // Fills the arrays with 0s except for {x,y} which is filled with a 1. 
