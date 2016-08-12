@@ -24,9 +24,6 @@ var UI = function(board) {
 
     for (var i = 0; i < board.height; i++) {
       for (var j = 0; j < board.width; j++) {
-        if (board.board[i][j] != 0) {
-          console.log('Got ', board.board[i][j]);
-        }
         tempBoard += this.divTemp(j, i, board.board[i][j]);
       }
     }
@@ -40,9 +37,4 @@ var UI = function(board) {
 
     console.timeEnd('ui.initBoard');
   };
-
-  // Temporary Styling below
-    console.time('ui.renderBoardChanges');
-    console.timeEnd('ui.renderBoardChanges');
-
 };
