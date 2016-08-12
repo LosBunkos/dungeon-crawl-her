@@ -40,10 +40,10 @@ var Board = function(width, height) {
     })
   }
 
-  // Init board, with [(0,0) (default) OR (x,y)] = 1 
-  // Fills the arrays with 0s except for {x,y} which is filled with a 1. 
+  // Init board, with [(0,0) (default) OR (x,y)] = 1
+  // Fills the arrays with 0s except for {x,y} which is filled with a 1.
   // By default, x = 0 & y = 0
-  this.init = function(x, y) { 
+  this.init = function(x, y) {
     console.time('board.init');
     this.initialized = true;
     if(typeof x === 'undefined' || typeof y === 'undefined') {
@@ -89,7 +89,7 @@ var Board = function(width, height) {
       }
       // Notice: we're giving _safelyGo() the *id*.
       if(this._safelyGo(obj.id, directions[direction])) {
-        console.info('Notice: Went ' + direction + '. (go)')
+        console.info('Notice: Went ' + direction + '. (go)');
         return true;
       }
     }
@@ -100,14 +100,14 @@ var Board = function(width, height) {
     var obj = this.gameObjs[id];
     var err = false;
 
-    var currPos = {x: obj.pos.x, 
-                   y: obj.pos.y};
+    var currPos = {x: obj.pos.x,
+      y: obj.pos.y};
 
     var newPos =  {x: currPos.x + delta.x,
-                   y: currPos.y + delta.y};
+      y: currPos.y + delta.y};
 
     var maxPos = {x: this.width - 1,
-                  y: this.height - 1};
+      y: this.height - 1};
 
 
     // Check for array overflows
@@ -124,15 +124,15 @@ var Board = function(width, height) {
     // if everything ok, proceed with moving the obj.
     if(!err) {
       console.info('Notice:', id, ': went success. new coordinates: {'
-        + newPos.x + ',' + newPos.y +
-      '} (_safelyGo)');
+          + newPos.x + ',' + newPos.y +
+          '} (_safelyGo)');
       // update board 'state'
       obj.prevPos = currPos;
       obj.pos = newPos;
-      this.board[obj.prevPos.y][obj.prevPos.y] = 0;
+      this.board[obj.prevPos.y][obj.prevPos.x] = 0;
       this.board[obj.pos.y][obj.pos.x] = obj.type;
     }
-    
+
     return !err;
   }
 

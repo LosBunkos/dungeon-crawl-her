@@ -1,13 +1,13 @@
-var board = new Board(10);
-board.init();
-var player = new gameObj(board, {x:4,y:3});
-player.type = 1;
-var enemy = new gameObj(board, {x:6, y:3});
-board.addObj(player);
-board.addObj(enemy);
-board.addAllObjsToBoard();
-var ui = new UI(board);
-ui.initBoard();
+// var board = new Board(10);
+// board.init();
+// var player = new gameObj(board, {x:4,y:3});
+// player.type = 1;
+// var enemy = new gameObj(board, {x:6, y:3});
+// board.addObj(player);
+// board.addObj(enemy);
+// board.addAllObjsToBoard();
+// var ui = new UI(board);
+// ui.initBoard();
 handleClicks = function() {
   var keyToDirection = {
     'w' : 'up',
@@ -21,8 +21,8 @@ handleClicks = function() {
     console.info('Notice: got keystroke: ' + move + ' (keyboard)');
     if(player.go(keyToDirection[move])) {
       board.addAllObjsToBoard();
-      ui.renderBoardChanges();
+      ui.initBoard(board);
     }
   });
 }
-handleClicks()
+handleClicks();
