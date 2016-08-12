@@ -7,11 +7,7 @@ var Board = function(width, height) {
   this.width = width;
   this.height = height;
   this.board = [];
-  this.x = 0;
-  this.y = 0;
-  this.prevX = 0;
-  this.prevY = 0;
-  this.gameObjs
+  this.gameObjs = [];
   this.initialized = false;
 
   // Methods
@@ -29,6 +25,7 @@ var Board = function(width, height) {
 
   this.addObj = function(obj) {
     this.gameObjs.push(obj);
+    console.info('Notice: Added', obj, 'to gameObjs (addObj)');
     // give the obj a unique ID based on its position
     // in the gameObjs arr:
     obj.id = this.gameObjs.length - 1;
@@ -36,7 +33,7 @@ var Board = function(width, height) {
 
 
   this.addAllObjsToBoard = function() {
-    this.gameObjs.each(function(obj) {
+    this.gameObjs.forEach(function(obj) {
       // Render all gameObjects to board arr
       this.board[obj.pos.y][obj.pos.x] = obj.type;
     })
