@@ -43,17 +43,20 @@ var UI = function(board) {
     for (var i = 0; i < this.board.height; i++) {
       for (var j = 0; j < this.board.width; j++) {
         // type = 0, cuz we ain't got nothing yet
-        tempBoard += this.divTemp(j, i, '0'); 
+        tempBoard += this.divTemp(j, i, board.board[i][j]); 
       }
     }
     this.$boardContainer.append(tempBoard);
 
     // Set the 'player div' and turn it to this.playerColor.
     // We can probably improve performance but only if we have to.
-    $('[data-x="' + this.board.x + 
-    '"][data-y="' + this.board.y + 
-    '"]').
-      css('background-color', this.playerColor);
+    // $('[data-x="' + this.board.x + 
+    // '"][data-y="' + this.board.y + 
+    // '"]').
+    //   css('background-color', this.playerColor);
+    $('[data-type=1]').css('background-color', 'black');
+    $('[data-type=2]').css('background-color', 'red');
+
 
     // Make it so the container has a set size,
     // and we only change the 'resolution' aka num of divs
@@ -70,11 +73,11 @@ var UI = function(board) {
   // Temporary Styling below
   this.renderBoardChanges = function() {
     console.time('ui.renderBoardChanges');
-    var $current = $('[data-x="' + this.board.x + 
-                   '"][data-y="' + this.board.y + 
+    var $current = $('[data-x="' + player.pos.x + 
+                   '"][data-y="' + player.pos.y + 
                    '"]');
-    var $previous = $('[data-x="' + this.board.prevX + 
-                    '"][data-y="' + this.board.prevY + 
+    var $previous = $('[data-x="' + player.prevPos.x + 
+                    '"][data-y="' + player.prevPos.y + 
                     '"]');
 
     $current.css('background-color', this.playerColor);
@@ -82,5 +85,6 @@ var UI = function(board) {
     
     console.timeEnd('ui.renderBoardChanges');
   }
+
 
 }

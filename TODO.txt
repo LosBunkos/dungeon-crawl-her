@@ -1,7 +1,5 @@
 Todo:
 1. Finish creating basic gameObj class: 
-  a. add types: currently {0 : empty, 1 : player}, 
-     add {2 : enemy, 3: non-living} etc.
   b. implement auto-actions.
      should have a syntax similar to:
      enemy = new gameObj('enemy');
@@ -19,6 +17,7 @@ Todo:
   c. 
 
 2. Rewrite board.js to enable usage of gameObj rendering & movement (Includes Player, Enemies, Obstacles etc);
+
 3. Create
 
 

@@ -35,7 +35,8 @@ var Board = function(width, height) {
   this.addAllObjsToBoard = function() {
     this.gameObjs.forEach(function(obj) {
       // Render all gameObjects to board arr
-      this.board[obj.pos.y][obj.pos.x] = obj.type;
+      console.log(obj);
+      this.board.board[obj.pos.y][obj.pos.x] = obj.type;
     })
   }
 
