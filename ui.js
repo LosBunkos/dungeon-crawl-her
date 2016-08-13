@@ -8,6 +8,9 @@ var UI = function(board) {
   this.defaultColor = 'white';
   this.enemyColor = 'red';
 
+  this.typeDic = [this.defaultColor,
+    this.playerColor, this.enemyColor];
+
   this.divTemp = function(x, y, type) {
     return "<div data-x='" + x +
               "' data-y='" + y +
@@ -17,13 +20,13 @@ var UI = function(board) {
   };
 
 
-  this.initBoard = function(board) {
+  this.initBoard = function() {
     console.time('ui.initBoard');
     var tempBoard = '' ;
     this.$boardContainer.empty();
 
-    for (var i = 0; i < board.height; i++) {
-      for (var j = 0; j < board.width; j++) {
+    for (var i = 0; i < this.board.height; i++) {
+      for (var j = 0; j < this.board.width; j++) {
         tempBoard += this.divTemp(j, i, board.board[i][j]);
       }
     }
@@ -37,4 +40,20 @@ var UI = function(board) {
 
     console.timeEnd('ui.initBoard');
   };
+
+  this._selectCoor = function(x, y) {
+    return  $('[data-y=' + y + '][data-x=' + x + ']');
+  }
+
+  // Accepts coordinates to turn white
+  // And array of coordinates to color according to type. 
+  this.renderChanges = function(add, type, rem) {
+    console.time('ui.renderChanges');
+    if(typeof rem !== 'undefined') {
+      this._selectCoor(rem.x, rem.y).css('background-color', this.defaultColor);
+    }
+   
+    this._selectCoor(add.x, add.y).css('background-color', this.typeDic[type]);
+    console.timeEnd('ui.renderChanges');
+  }
 };

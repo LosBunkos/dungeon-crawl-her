@@ -18,11 +18,10 @@ handleClicks = function() {
   var move;
   $(document).keypress(function(e) {
     move = String.fromCharCode(e.which);
+    console.group('keypress');
     console.info('Notice: got keystroke: ' + move + ' (keyboard)');
-    if(player.go(keyToDirection[move])) {
-      board.addAllObjsToBoard();
-      ui.initBoard(board);
-    }
+    player.go(keyToDirection[move])
+    console.groupEnd('keypress');
   });
 }
 handleClicks();

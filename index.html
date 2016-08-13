@@ -15,16 +15,18 @@
 
 <script>
 // Just for testing purposes
-var board = new Board(10);
+var board = new Board(25);
+var ui = new UI(board);
+board.ui = ui;
 board.init();
 var enemy = new gameObj(board, {x:5, y:5});
 var player = new gameObj(board, {x:0, y:0});
 player.type = 1;
 board.addObj(enemy);
 board.addObj(player);
-board.addAllObjsToBoard();
-var ui = new UI(board);
 ui.initBoard(board);
+board.addObj(new gameObj(board, {x:0, y:10}))
+
 </script>
 <script type="text/javascript" src='keyboard.js'></script>
 </body>

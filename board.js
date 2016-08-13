@@ -1,11 +1,13 @@
-var Board = function(width, height) {
-  if(typeof height === 'undefined') { // allows 'new Board(5)'
-    var height = width;
-  }
+var Board = function(width, ui, height) {
 
+  if (typeof height === 'undefined') {
+    this.height = width;
+  } else {
+    this.height = height;
+  }
   // Properties
   this.width = width;
-  this.height = height;
+  this.ui = ui; // tests for undefined are in the methods
   this.board = [];
   this.gameObjs = [];
   this.initialized = false;
@@ -26,9 +28,14 @@ var Board = function(width, height) {
   this.addObj = function(obj) {
     this.gameObjs.push(obj);
     console.info('Notice: Added', obj, 'to gameObjs (addObj)');
-    // give the obj a unique ID based on its position
-    // in the gameObjs arr:
+    // assign an id to the obj
     obj.id = this.gameObjs.length - 1;
+    // add obj to board array
+    this.board[obj.pos.y][obj.pos.x] = obj.type;
+    // update ui
+    //
+    console.log(this);
+    this.ui.renderChanges(obj.pos, obj.type);
   }
 
 
@@ -58,7 +65,9 @@ var Board = function(width, height) {
     console.log(''); // spacing
 
     this.board = this._generate();
-    this.addAllObjsToBoard();
+    if(typeof this.ui !== 'undefined') {
+      this.ui.initBoard();
+    }
     console.timeEnd('board.init');
   }
 
@@ -88,6 +97,9 @@ var Board = function(width, height) {
       }
       // Notice: we're giving _safelyGo() the *id*.
       if(this._safelyGo(obj.id, directions[direction])) {
+        if(typeof this.ui !== 'undefined') {
+          this.ui.renderChanges(obj.pos, obj.type, obj.prevPos);
+        }
         console.info('Notice: Went ' + direction + '. (go)');
         return true;
       }
