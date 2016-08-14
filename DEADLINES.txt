@@ -1,0 +1,25 @@
+1. 
+Tomer:
+15.8 - day's end: see how we can use three.js with our current board system (or a modified version of it).
+
+Vova & Nadav:
+15.8 day's end - figure out HP & attacking system & code EVERYTHING
+
+
+Project:
+vova & nadav:
+16.8: scoring, weaponry, obstacles
+tomer: 
+16.8: implement everything in 3.js / UI of choice.
+
+17.8: TOWRITE
+
+18.8: Polishing, testing, building the game itself.
+
+
+ideas:
+1. scoring
+2. infinite-scroll
+3. weaponry
+4. obstacles
+5. leveling system

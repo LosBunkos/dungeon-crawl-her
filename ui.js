@@ -43,7 +43,7 @@ var UI = function(board) {
 
   this._selectCoor = function(x, y) {
     return  $('[data-y=' + y + '][data-x=' + x + ']');
-  }
+  };
 
   // Accepts coordinates to turn white
   // And array of coordinates to color according to type. 
@@ -55,5 +55,5 @@ var UI = function(board) {
    
     this._selectCoor(add.x, add.y).css('background-color', this.typeDic[type]);
     console.timeEnd('ui.renderChanges');
-  }
+  };
 };
