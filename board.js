@@ -23,7 +23,7 @@ var Board = function(width, ui, height) {
       tempBoard.push(tempRow);
     }
     return tempBoard;
-  }
+  };
 
   this.addObj = function(obj) {
     this.gameObjs.push(obj);
@@ -36,15 +36,15 @@ var Board = function(width, ui, height) {
     //
     console.log(this);
     this.ui.renderChanges(obj.pos, obj.type);
-  }
+  };
 
 
   this.addAllObjsToBoard = function() {
     this.gameObjs.forEach(function(obj) {
       // Render all gameObjects to board arr
       this.board.board[obj.pos.y][obj.pos.x] = obj.type;
-    })
-  }
+    });
+  };
 
   // Init board, with [(0,0) (default) OR (x,y)] = 1
   // Fills the arrays with 0s except for {x,y} which is filled with a 1.
@@ -53,8 +53,8 @@ var Board = function(width, ui, height) {
     console.time('board.init');
     this.initialized = true;
     if(typeof x === 'undefined' || typeof y === 'undefined') {
-      var x = 0;
-      var y = 0;
+      x = 0;
+      y = 0;
     }
     // Neat console handling
     console.group('init');
@@ -69,7 +69,7 @@ var Board = function(width, ui, height) {
       this.ui.initBoard();
     }
     console.timeEnd('board.init');
-  }
+  };
 
   // @amount{OPTIONAL}: default 1.
   this.go = function(obj, direction, amount) {
@@ -78,21 +78,21 @@ var Board = function(width, ui, height) {
       return false;
     }
     if(typeof amount === 'undefined') {
-      var amount = 1;
+      amount = 1;
     }
     var directions = {
       'up'   : {x: 0, y: -1 * amount},
       'down' : {x: 0, y:  1 * amount},
       'left' : {x: -1 * amount, y: 0},
       'right': {x:  1 * amount, y: 0}
-    }
+    };
 
     if(typeof directions[direction] === 'undefined') {
       console.error("Error: Can't go " + direction + '. (go)');
       return false;
     } else {
       if (obj.id === 'undefined') {
-        console.error(obj)
+        console.error(obj);
         console.error("object id undefined (go)");
       }
       // Notice: we're giving _safelyGo() the *id*.
@@ -104,7 +104,7 @@ var Board = function(width, ui, height) {
         return true;
       }
     }
-  }
+  };
 
   this._safelyGo = function(id, delta) {
     // obj is the gameObjects to move
@@ -134,8 +134,8 @@ var Board = function(width, ui, height) {
     }
     // if everything ok, proceed with moving the obj.
     if(!err) {
-      console.info('Notice:', id, ': went success. new coordinates: {'
-          + newPos.x + ',' + newPos.y +
+      console.info('Notice:', id, ': went success. new coordinates: ' + 
+                   newPos.x + ',' + newPos.y +
           '} (_safelyGo)');
       // update board 'state'
       obj.prevPos = currPos;
@@ -145,6 +145,6 @@ var Board = function(width, ui, height) {
     }
 
     return !err;
-  }
+  };
 
-}
+};
