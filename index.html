@@ -25,8 +25,17 @@ player.type = 1;
 board.addObj(enemy);
 board.addObj(player);
 ui.initBoard(board);
-board.addObj(new gameObj(board, {x:0, y:10}))
-
+board.addObj(new gameObj(board, {x:0, y:10}));
+console.info('Enemy:', enemy);
+enemy.moveAround = function() {
+  var dirs = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
+  var i = 0;
+  setInterval(function() {
+    enemy.go(dirs[i % dirs.length]);
+    i++;
+  }, 500);
+}
+enemy.moveAround();
 </script>
 <script type="text/javascript" src='keyboard.js'></script>
 </body>
