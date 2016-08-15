@@ -132,6 +132,21 @@ var Board = function(width, ui, height) {
       console.warn('Warning:', id, ': Y overflow (safelyGo)');
       err = true;
     }
+
+    // filter gameObjs by position - 
+    // fills 'collisions' array with objects that 
+    // have the same position as where we're trying to go
+    // we should NEVER have collisions.length > 1
+    var collisions = this.gameObjs.filter(function(obj) {
+      return (newPos.y === obj.pos.y) &&
+             (newPos.x === obj.pos.x);
+    });
+    // if we found collisions
+    if(collisions.length != 0) {
+      console.warn("Warning:", id, "would collide with", collisions[0].id);
+      err = true;
+    }
+
     // if everything ok, proceed with moving the obj.
     if(!err) {
       console.info('Notice:', id, ': went success. new coordinates: ' + 
