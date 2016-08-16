@@ -1,5 +1,27 @@
+/* ================================= 
+  Base Element Styles
+==================================== */
+
+* {
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+
 body {
   background-color: #373C44;
+}
+
+/*img {
+  max-width: 100%;
+}*/
+
+p {
+  font-size: .95em;
+  margin-bottom: 1.8em;
+}
+
+a {
+  text-decoration: none;
 }
 
 div .square {
@@ -13,6 +35,14 @@ div .square {
   overflow: visible;
   position: relative;
 }
+
+h1 {
+  font-family: 'Bungee Shade', cursive;
+}
+
+/* ================================= 
+  Base Layout Styles
+==================================== */
 
 #board {
   width: 797px;
@@ -33,4 +63,62 @@ div .square {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.col {
+  padding-right: 1em;
+  padding-left: 1em;
+  margin-top: 1em;
+}
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+@media (min-width: 769px) {
+
+
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .col {
+    float: left;
+  }
+
+  .primary,
+  .secondary {
+    width: 50%;
+  }
+
+  .tagline {
+    font-size: 1.4em;
+  }
+
+  /* ---- Float clearfix ---- */
+
+  .clearfix::after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+
+}
+
+@media (min-width: 1025px) {
+  
+  .container {
+    width: 100%;
+    /*max-width: 1150px;*/
+  }
+
+  .primary {
+    width: 65%;
+  }
+
+  .secondary{
+    width: 35%;
+  }
+
 }

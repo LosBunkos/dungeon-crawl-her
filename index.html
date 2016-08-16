@@ -3,12 +3,26 @@
 <head>
   <title></title>
   <link rel="stylesheet" type="text/css" href="style.css">
+   <link rel="stylesheet" type="text/css" href="normalize.css">
+   <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
   <script src="node_modules/jquery/dist/jquery.js"></script>
 </head>
 <body>
 
-<div id='board'></div>
-<div id="score"></div>
+  <div class="container clearfix">
+    <div class="primary col">
+      <div id='board'></div>
+    </div>
+    <div class="secondary col">
+      <div id="score">
+        <h1>Dungeon Crawler</h1>
+      </div>
+    </div>
+  </div>
+
+
+
+
 <script type="text/javascript" src='board.js'></script>
 <script type="text/javascript" src='gameobj.js'></script>
 <!-- <script type="text/javascript" src='player.js'></script> -->
@@ -24,11 +38,14 @@ board.init();
 var player = new gameObj(board, {x:0, y:0});
 player.type = 1;
 var enemy1 = new gameObj(board, {x:5, y:7});
-var enemy2 = new gameObj(board, {x:9, y:15});
+var enemy2 = new gameObj(board, {x:5, y:15});
 var enemy3 = new gameObj(board, {x:25, y:3});
+var enemy4 = new gameObj(board, {x:20, y:20});
+var enemy5 = new gameObj(board, {x:18, y:10});
 board.addObj(enemy1);
 board.addObj(enemy2);
 board.addObj(enemy3);
+board.addObj(enemy4);
 board.addObj(player);
 
 newWall(board, {x:0, y:8}, 10, 2);
@@ -51,6 +68,8 @@ var autoAct = function(enemy, dirs, time) {
 autoAct(enemy1, dirs1, 500);
 autoAct(enemy2, dirs2, 400);
 autoAct(enemy3, dirs1, 250);
+autoAct(enemy4, dirs1, 300);
+autoAct(enemy5, dirs2, 350);
 
 
 
