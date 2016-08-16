@@ -7,9 +7,11 @@ var UI = function(board) {
   this.playerColor = 'black';
   this.defaultColor = 'white';
   this.enemyColor = 'red';
+  this.projectileColor = 'blue';
 
   this.typeDic = [this.defaultColor,
-    this.playerColor, this.enemyColor];
+    this.playerColor, this.enemyColor,
+    this. projectileColor];
 
   this.divTemp = function(x, y, type) {
     return "<div data-x='" + x +

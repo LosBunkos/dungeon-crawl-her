@@ -46,6 +46,11 @@ var Board = function(width, ui, height) {
     });
   };
 
+  this.delObj = function(obj) {
+    console.info('>Notice: removing gameObj', obj);
+    gameObjs.splice(obj.id, 1);
+  }
+
   // Init board, with [(0,0) (default) OR (x,y)] = 1
   // Fills the arrays with 0s except for {x,y} which is filled with a 1.
   // By default, x = 0 & y = 0
@@ -142,9 +147,9 @@ var Board = function(width, ui, height) {
              (newPos.x === obj.pos.x);
     });
     // if we found collisions
-    if(collisions.length != 0) {
+    if (collisions.length != 0) {
       console.warn("Warning:", id, "would collide with", collisions[0].id);
-      err = true;
+      
     }
 
     // if everything ok, proceed with moving the obj.

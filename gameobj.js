@@ -5,27 +5,29 @@ var gameObj = function(board, startingPos) {
     board.go(this, direction);
     return true;
   };
-
-
-
-
-
-      // this.initialized = false;
-
-      // Methods
-      // this.autoAct = function() {};
-      // this.init = function() {
-      //
-      //   // Filling coordinates
-      //   for (var i = 0; i < this.size.x; i++) {
-      //     this.coors.x.push(this.location.x + i);
-      //   }
-      //
-      //   for (var i = 0; i < this.size.y; i++) {
-      //     this.coors.y.push(this.location.y + i);
-      //   }
-      //
-      //   this.initialized = true;
-      // }
-
+  this.die = function(){};
+  this.autoAct = function(){};
 };
+
+var Projectile = function(board, startingPos, direction, speed) {
+  this.type = 3;
+  this.speed = speed;
+  this.pos = startingPos;
+  this.direction = direction;
+  this.go = function(direction){
+    board.go(this, direction);
+    return true;
+  };
+  this.onCollision = function(withType) {
+    board.delObj(this);
+  }
+
+  var that = this;
+  this.autoAct = function() {
+    setInterval(function() {
+      console.log(that);
+      that.go(direction);
+    }, speed);
+  // this.autoAct();
+}
+}

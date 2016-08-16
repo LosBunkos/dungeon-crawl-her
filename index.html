@@ -8,6 +8,7 @@
 <body>
 
 <div id='board'></div>
+<div id="score"></div>
 <script type="text/javascript" src='board.js'></script>
 <script type="text/javascript" src='gameobj.js'></script>
 <!-- <script type="text/javascript" src='player.js'></script> -->
@@ -27,15 +28,18 @@ board.addObj(player);
 ui.initBoard(board);
 board.addObj(new gameObj(board, {x:0, y:10}));
 console.info('Enemy:', enemy);
-enemy.moveAround = function() {
-  var dirs = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
+enemy.autoAct = function() {
+  // var dirs = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
   var i = 0;
   setInterval(function() {
-    enemy.go(dirs[i % dirs.length]);
-    i++;
+    // enemy.go(dirs[i % dirs.length]);
+    // i++;
+    var proj1 = new Projectile(board, {x: enemy.pos.x + 1, y: enemy.pos.y}, 'right', 50);
+    board.addObj(proj1);
+    proj1.autoAct();
   }, 500);
 }
-enemy.moveAround();
+enemy.autoAct();
 </script>
 <script type="text/javascript" src='keyboard.js'></script>
 </body>
