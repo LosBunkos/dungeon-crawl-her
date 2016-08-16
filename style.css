@@ -9,9 +9,12 @@ div .square {
 }
 
 #board {
-  width: 1200px;
-  height: 904px;
+  width: 797px;
+  height: 600px;
   border: 1px solid black;
   border-radius: 12px;
   background: url('img/dungeon-crawler.png') no-repeat;
+  background-size: contain;
+  padding: 60px;
+  box-sizing: border-box;
 }

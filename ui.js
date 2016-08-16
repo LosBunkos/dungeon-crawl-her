@@ -58,4 +58,11 @@ var UI = function(board) {
     this._selectCoor(add.x, add.y).css('background-color', this.typeDic[type]);
     console.timeEnd('ui.renderChanges');
   };
+
+  // Wall objects 
+
+  $()
+
+
 };
+
