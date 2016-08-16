@@ -6,6 +6,7 @@ div .square {
   float: left;
   background-color: rgba(0,0,0,0);
   border-radius: 12px;
+  overflow: visible;
 }
 
 #board {
