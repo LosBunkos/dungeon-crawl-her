@@ -26,6 +26,7 @@ var player = new gameObj(board, {x:0, y:0});
 player.type = 1;
 board.addObj(enemy);
 board.addObj(player);
+newWall(board, {x:0, y:8}, 10, 2);
 ui.initBoard(board);
 board.addObj(new gameObj(board, {x:0, y:10}));
 console.info('Enemy:', enemy);

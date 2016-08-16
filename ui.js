@@ -6,10 +6,11 @@ var UI = function(board) {
   this.playerColor = 'img/hero.png';
   this.defaultColor = 'img/transparent.png';
   this.enemyColor = "img/enemy.png";
+  this.projectileColor = 'img/transparent.png';
 
   this.typeDic = [this.defaultColor,
     this.playerColor, this.enemyColor,
-    this. projectileColor];
+    this.projectileColor];
 
   this.imgize = function(string) {
     return '<img src="' + string + '""></img>'
