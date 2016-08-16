@@ -21,24 +21,37 @@ board.width = 33;
 var ui = new UI(board);
 board.ui = ui;
 board.init();
-var enemy = new gameObj(board, {x:5, y:5});
 var player = new gameObj(board, {x:0, y:0});
 player.type = 1;
-board.addObj(enemy);
+var enemy1 = new gameObj(board, {x:5, y:7});
+var enemy2 = new gameObj(board, {x:9, y:15});
+var enemy3 = new gameObj(board, {x:25, y:3});
+board.addObj(enemy1);
+board.addObj(enemy2);
+board.addObj(enemy3);
 board.addObj(player);
+
 newWall(board, {x:0, y:8}, 10, 2);
 ui.initBoard(board);
-board.addObj(new gameObj(board, {x:0, y:10}));
-console.info('Enemy:', enemy);
-enemy.autoAct = function() {
-  var dirs = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
+console.info('Enemy1:', enemy1);
+
+var dirs1 = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
+var dirs2 = ['up', 'right', 'down', 'down', 'down', 'left', 'up', 'up'];
+
+var autoAct = function(enemy, dirs, time) {
   var i = 0;
   setInterval(function() {
     enemy.go(dirs[i % dirs.length]);
     i++;
-  }, 500);
+  }, time);
 }
-enemy.autoAct();
+
+autoAct(enemy1, dirs1, 500);
+autoAct(enemy2, dirs2, 400);
+autoAct(enemy3, dirs1, 250);
+
+
+
 </script>
 <script type="text/javascript" src='keyboard.js'></script>
 </body>

@@ -11,6 +11,7 @@ div .square {
   background-color: rgba(0,0,0,0);
   border-radius: 12px;
   overflow: visible;
+  position: relative;
 }
 
 #board {
@@ -20,10 +21,16 @@ div .square {
   border-radius: 12px;
   background: url('img/dungeon-crawler.png') no-repeat;
   background-size: contain;
-  padding: 60px;
+  padding-left: 100px;
+  padding-right: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   box-sizing: border-box;
 }
 
 .square > img {
   height: 300%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
