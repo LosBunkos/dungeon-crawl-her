@@ -2,12 +2,10 @@ var UI = function(board) {
   this.board = board;
 
 
-  // Where all the divs go:
   this.$boardContainer = $('#board');
-  this.playerColor = 'black';
+  this.playerColor = 'url("img/hero.png") no-repeat';
   this.defaultColor = 'rgba(0,0,0,0)';
-  this.enemyColor = 'red';
-  this.projectileColor = 'blue';
+  this.enemyColor = 'url("img/enemy.png") no-repeat';
 
   this.typeDic = [this.defaultColor,
     this.playerColor, this.enemyColor,
@@ -34,8 +32,8 @@ var UI = function(board) {
     }
     this.$boardContainer.append(tempBoard);
 
-    $('[data-type=1]').css('background-color', this.playerColor);
-    $('[data-type=2]').css('background-color', this.enemyColor);
+    $('[data-type=1]').css('background', this.playerColor);
+    $('[data-type=2]').css('background', this.enemyColor);
 
     $('.square').css('width',((100 / board.width) + '%'));
     $('.square').css('height',((100 / board.height) + '%'));
@@ -52,10 +50,10 @@ var UI = function(board) {
   this.renderChanges = function(add, type, rem) {
     console.time('ui.renderChanges');
     if(typeof rem !== 'undefined') {
-      this._selectCoor(rem.x, rem.y).css('background-color', this.defaultColor);
+      this._selectCoor(rem.x, rem.y).css('background', this.defaultColor);
     }
    
-    this._selectCoor(add.x, add.y).css('background-color', this.typeDic[type]);
+    this._selectCoor(add.x, add.y).css('background', this.typeDic[type]);
     console.timeEnd('ui.renderChanges');
   };
 
