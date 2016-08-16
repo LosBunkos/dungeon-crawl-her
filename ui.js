@@ -5,7 +5,7 @@ var UI = function(board) {
   // Where all the divs go:
   this.$boardContainer = $('#board');
   this.playerColor = 'black';
-  this.defaultColor = 'white';
+  this.defaultColor = 'rgba(0,0,0,0)';
   this.enemyColor = 'red';
   this.projectileColor = 'blue';
 
