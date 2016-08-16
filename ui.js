@@ -3,13 +3,17 @@ var UI = function(board) {
 
 
   this.$boardContainer = $('#board');
-  this.playerColor = 'url("img/hero.png") no-repeat';
-  this.defaultColor = 'rgba(0,0,0,0)';
-  this.enemyColor = 'url("img/enemy.png") no-repeat';
+  this.playerColor = 'img/hero.png';
+  this.defaultColor = 'img/transparent.png';
+  this.enemyColor = "img/enemy.png";
 
   this.typeDic = [this.defaultColor,
     this.playerColor, this.enemyColor,
     this. projectileColor];
+
+  this.imgize = function(string) {
+    return '<img src="' + string + '""></img>'
+  }
 
   this.divTemp = function(x, y, type) {
     return "<div data-x='" + x +
@@ -32,8 +36,8 @@ var UI = function(board) {
     }
     this.$boardContainer.append(tempBoard);
 
-    $('[data-type=1]').css('background', this.playerColor);
-    $('[data-type=2]').css('background', this.enemyColor);
+    $('[data-type=1]').html(this.imgize(this.playerColor));
+    $('[data-type=2]').html(this.imgize(this.enemyColor));
 
     $('.square').css('width',((100 / board.width) + '%'));
     $('.square').css('height',((100 / board.height) + '%'));
@@ -50,10 +54,10 @@ var UI = function(board) {
   this.renderChanges = function(add, type, rem) {
     console.time('ui.renderChanges');
     if(typeof rem !== 'undefined') {
-      this._selectCoor(rem.x, rem.y).css('background', this.defaultColor);
+      this._selectCoor(rem.x, rem.y).html(this.imgize(this.defaultColor));
     }
    
-    this._selectCoor(add.x, add.y).css('background', this.typeDic[type]);
+    this._selectCoor(add.x, add.y).html(this.imgize(this.typeDic[type]));
     console.timeEnd('ui.renderChanges');
   };
 
