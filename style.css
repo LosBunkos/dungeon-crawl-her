@@ -9,6 +9,7 @@
 
 body {
   background-color: #373C44;
+  background: url('img/bg-main-min.jpg') no-repeat;
 }
 
 /*img {
@@ -38,6 +39,8 @@ div .square {
 
 h1 {
   font-family: 'Bungee Shade', cursive;
+  color: #F15923;
+  letter-spacing: 2px;
 }
 
 /* ================================= 
@@ -47,7 +50,6 @@ h1 {
 #board {
   width: 797px;
   height: 600px;
-  border: 1px solid black;
   border-radius: 12px;
   background: url('img/dungeon-crawler.png') no-repeat;
   background-size: contain;
@@ -56,6 +58,9 @@ h1 {
   padding-top: 60px;
   padding-bottom: 60px;
   box-sizing: border-box;
+  -webkit-box-shadow: -5px 8px 5px -1px rgba(0,0,0,0.66);
+  -moz-box-shadow: -5px 8px 5px -1px rgba(0,0,0,0.66);
+  box-shadow: -5px 8px 5px -1px rgba(0,0,0,0.66);
 }
 
 .square > img {
@@ -69,6 +74,10 @@ h1 {
   padding-right: 1em;
   padding-left: 1em;
   margin-top: 1em;
+}
+
+.store-info {
+  
 }
 
 /* ================================= 
