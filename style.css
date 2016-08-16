@@ -1,3 +1,7 @@
+body {
+  background-color: #373C44;
+}
+
 div .square {
   box-sizing: border-box;
   height: 100%;
@@ -18,4 +22,8 @@ div .square {
   background-size: contain;
   padding: 60px;
   box-sizing: border-box;
+}
+
+.square > img {
+  height: 300%;
 }
