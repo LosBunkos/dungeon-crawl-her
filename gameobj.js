@@ -1,4 +1,5 @@
 var gameObj = function(board, startingPos) {
+  this.alive = true;
   this.pos = startingPos;
   this.type = 2;
   this.go = function(direction){
@@ -7,6 +8,9 @@ var gameObj = function(board, startingPos) {
   };
   this.die = function(){};
   this.autoAct = function(){};
+  this.onCollision = function(obj) {
+    board.delObj(this);
+  }
 };
 
 var Projectile = function(board, startingPos, direction, speed) {
@@ -18,8 +22,9 @@ var Projectile = function(board, startingPos, direction, speed) {
     board.go(this, direction);
     return true;
   };
-  this.onCollision = function(withType) {
+  this.onCollision = function(obj) {
     board.delObj(this);
+    debugger;
   }
 
   var that = this;

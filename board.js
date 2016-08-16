@@ -11,6 +11,7 @@ var Board = function(width, ui, height) {
   this.board = [];
   this.gameObjs = [];
   this.initialized = false;
+  this.currID = 0;
 
   // Methods
   this._generate = function() {
@@ -29,7 +30,7 @@ var Board = function(width, ui, height) {
     this.gameObjs.push(obj);
     console.info('Notice: Added', obj, 'to gameObjs (addObj)');
     // assign an id to the obj
-    obj.id = this.gameObjs.length - 1;
+    obj.id = this.currID++;
     // add obj to board array
     this.board[obj.pos.y][obj.pos.x] = obj.type;
     // update ui
@@ -38,7 +39,14 @@ var Board = function(width, ui, height) {
     this.ui.renderChanges(obj.pos, obj.type);
   };
 
-
+  this.findObjByID = function(obj) {
+    for (var i = 0; i < this.gameObjs.length; i++) {
+      if (obj.id === this.gameObjs[i].id) {
+        return i;
+      }
+    }
+    return -1;
+  }
   this.addAllObjsToBoard = function() {
     this.gameObjs.forEach(function(obj) {
       // Render all gameObjects to board arr
@@ -48,7 +56,8 @@ var Board = function(width, ui, height) {
 
   this.delObj = function(obj) {
     console.info('>Notice: removing gameObj', obj);
-    gameObjs.splice(obj.id, 1);
+    var idx = this.findObjByID(obj);
+    this.gameObjs.splice(idx, 1);
   }
 
   // Init board, with [(0,0) (default) OR (x,y)] = 1
@@ -101,7 +110,7 @@ var Board = function(width, ui, height) {
         console.error("object id undefined (go)");
       }
       // Notice: we're giving _safelyGo() the *id*.
-      if(this._safelyGo(obj.id, directions[direction])) {
+      if(this._safelyGo(obj, directions[direction])) {
         if(typeof this.ui !== 'undefined') {
           this.ui.renderChanges(obj.pos, obj.type, obj.prevPos);
         }
@@ -111,9 +120,9 @@ var Board = function(width, ui, height) {
     }
   };
 
-  this._safelyGo = function(id, delta) {
+  this._safelyGo = function(obj, delta) {
     // obj is the gameObjects to move
-    var obj = this.gameObjs[id];
+    var idx = this.findObjByID(obj);
     var err = false;
 
     var currPos = {x: obj.pos.x,
@@ -129,12 +138,12 @@ var Board = function(width, ui, height) {
     // Check for array overflows
     // x overflows
     if(newPos.x > maxPos.x || newPos.x < 0) {
-      console.warn('Warning:', id, ': X overflow (safelyGo)');
+      console.warn('Warning:', obj.id, ': X overflow (safelyGo)');
       err = true;
     }
     // y overflows
     if(newPos.y > maxPos.y || newPos.y < 0) {
-      console.warn('Warning:', id, ': Y overflow (safelyGo)');
+      console.warn('Warning:', obj.id, ': Y overflow (safelyGo)');
       err = true;
     }
 
@@ -148,13 +157,14 @@ var Board = function(width, ui, height) {
     });
     // if we found collisions
     if (collisions.length != 0) {
-      console.warn("Warning:", id, "would collide with", collisions[0].id);
-      
+      console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
+      this.delObj(collisions[0]);
+      this.delObj(obj);
     }
 
     // if everything ok, proceed with moving the obj.
     if(!err) {
-      console.info('Notice:', id, ': went success. new coordinates: ' + 
+      console.info('Notice:', obj.id, ': went success. new coordinates: ' + 
                    newPos.x + ',' + newPos.y +
           '} (_safelyGo)');
       // update board 'state'
