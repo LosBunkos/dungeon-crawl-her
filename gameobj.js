@@ -24,7 +24,6 @@ var Projectile = function(board, startingPos, direction, speed) {
   };
   this.onCollision = function(obj) {
     board.delObj(this);
-    debugger;
   }
 
   var that = this;

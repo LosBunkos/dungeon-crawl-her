@@ -60,6 +60,11 @@ var Board = function(width, ui, height) {
     this.gameObjs.splice(idx, 1);
   }
 
+  this.collide = function(obj1, obj2) {
+    obj1.onCollision(obj2);
+    obj2.onCollision(obj1);
+  }
+
   // Init board, with [(0,0) (default) OR (x,y)] = 1
   // Fills the arrays with 0s except for {x,y} which is filled with a 1.
   // By default, x = 0 & y = 0
@@ -158,8 +163,7 @@ var Board = function(width, ui, height) {
     // if we found collisions
     if (collisions.length != 0) {
       console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
-      this.delObj(collisions[0]);
-      this.delObj(obj);
+      this.collide(collisions[0], obj)
     }
 
     // if everything ok, proceed with moving the obj.
