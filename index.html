@@ -29,14 +29,11 @@ ui.initBoard(board);
 board.addObj(new gameObj(board, {x:0, y:10}));
 console.info('Enemy:', enemy);
 enemy.autoAct = function() {
-  // var dirs = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
+  var dirs = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
   var i = 0;
   setInterval(function() {
-    // enemy.go(dirs[i % dirs.length]);
-    // i++;
-    var proj1 = new Projectile(board, {x: enemy.pos.x + 1, y: enemy.pos.y}, 'right', 50);
-    board.addObj(proj1);
-    proj1.autoAct();
+    enemy.go(dirs[i % dirs.length]);
+    i++;
   }, 500);
 }
 enemy.autoAct();
