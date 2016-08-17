@@ -23,7 +23,7 @@ handleClicks = function() {
     move = String.fromCharCode(e.which);
     console.group('keypress');
     console.info('Notice: got keystroke: ' + move + ' (keyboard)');
-    board.player.go(keyToDirection[move])
+    board.player.go(keyToDirection[move]);
     console.groupEnd('keypress');
   });
 }

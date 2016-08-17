@@ -10,7 +10,7 @@ var UI = function(board) {
   
   this.typeDic = [this.defaultColor,
     this.playerColor, this.enemyColor,
-    this.wallColor];
+    this.wallColor, this.defaultColor];
 
   this.imgize = function(string) {
     return '<img src="' + string + '""></img>'
