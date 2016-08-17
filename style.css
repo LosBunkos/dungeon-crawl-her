@@ -107,7 +107,10 @@ button {
 }
 
 .arrow {
-  margin-top: 170px;
+  float: right;
+  margin-top: -70px;
+  padding-right: 15px;
+  z-index: 1000;
 }
 
 /* ================================= 
@@ -195,42 +198,6 @@ button {
     animation: walk 2s steps(12) infinite; /* <-- animation parameters, see below*/
 }​
 
-/*.animate {
-    width: 61px;
-    height: 75px;
-    background-image: url("img/her0-sprite2.png");
-    
-    -webkit-animation: play .8s steps(10) infinite;
-       -moz-animation: play .8s steps(10) infinite;
-        -ms-animation: play .8s steps(10) infinite;
-         -o-animation: play .8s steps(10) infinite;
-            animation: play .8s steps(10) infinite;
-}
-
-@-webkit-keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -500px; }
-}
-
-@-moz-keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -500px; }
-}
-
-@-ms-keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -500px; }
-}
-
-@-o-keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -500px; }
-}
-
-@keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -500px; }
-}*/
 
 
 
