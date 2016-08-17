@@ -151,6 +151,37 @@ h1, h2 {
 
 /* Animations */
 
+
+@-webkit-keyframes walk {
+    from { background-position: 0px; }
+    to { background-position: -1500px; }  /* <-- width of spritesheet*/
+}
+
+@-moz-keyframes walk {
+    from { background-position: 0px; }
+    to { background-position: -1500px; } /* <-- width of spritesheet*/
+}
+
+@-o-keyframes walk {
+    from { background-position: 0px; }
+    to { background-position: -1500px; } /* <-- width of spritesheet*/
+}
+
+@keyframes walk {
+    from { background-position: 0px; }
+    to { background-position: -1500px; } /* <-- width of spritesheet*/
+}
+
+.hero {
+    width: 125px; height: 142px; /* <--  size of a single frame*/
+    background-image: url("img/hero-sprite3.png"); /* <-- url to spritesheet*/
+    margin: 0 auto;    
+    -webkit-animation: walk 2s steps(12) infinite; 
+    -moz-animation: walk 2s steps(12) infinite;
+    -o-animation: walk 2s steps(12) infinite;
+    animation: walk 2s steps(12) infinite; /* <-- animation parameters, see below*/
+}​
+
 /*.animate {
     width: 61px;
     height: 75px;
