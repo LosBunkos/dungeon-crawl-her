@@ -22,7 +22,7 @@
       <div id="score">
         <h1>Dungeon Crawler</h1>
         <div class="score-info">
-          <h2 class="score-title">SCORE</h2>
+          <h2 class="score-title">SCORE: <span id='score-number'>0</span></h2>
           <h4 id='ded'></h4>
           <button id="refresh">Try Again!</button>
         </div>
@@ -64,8 +64,14 @@ var enemy6 = new gameObj(board, {x:2, y:12});
 var enemy7 = new gameObj(board, {x:11, y:10});
 
 // create gold
-var gold1 = new gameObj(board, {x:0, y:23});
+var gold1 = new gameObj(board, {x:2, y:2});
 gold1.type = 5;
+var gold2 = new gameObj(board, {x:20, y:2});
+gold2.type = 5;
+var gold3 = new gameObj(board, {x:2, y:20});
+gold3.type = 5;
+var gold4 = new gameObj(board, {x:15, y:20});
+gold4.type = 5;
 
 // Create Walls
 newWall(board, {x:0, y:8}, 10, 2);
@@ -76,6 +82,7 @@ newWall(board, {x:31, y:18}, 2, 7, 4);
 
 
 // Add Everyone
+// Enemies
 board.addObj(enemy1);
 board.addObj(enemy2);
 board.addObj(enemy3);
@@ -83,7 +90,15 @@ board.addObj(enemy4);
 board.addObj(enemy5);
 board.addObj(enemy6);
 board.addObj(enemy7);
+
+// Player
 board.addObj(player);
+
+// Gold
+board.addObj(gold1);
+board.addObj(gold2);
+board.addObj(gold3);
+board.addObj(gold4);
 
 // Set up directions for autoMove
 var dirs1 = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
@@ -114,11 +129,11 @@ var randomMove = function(enemy, time, changeEvery) {
 }
 
 randomMove(enemy1, 100);
-randomMove(enemy2, 145, 10);
-randomMove(enemy3, 120, 4);
-randomMove(enemy4, 150, 3);
+randomMove(enemy2, 245, 10);
+randomMove(enemy3, 220, 4);
+randomMove(enemy4, 250, 3);
 randomMove(enemy5, 250, 1);
-randomMove(enemy6, 150, 5);
+randomMove(enemy6, 250, 5);
 randomMove(enemy7, 150, 2);
 
 handleClicks();

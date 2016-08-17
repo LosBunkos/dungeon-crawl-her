@@ -38,8 +38,11 @@ var UI = function(board) {
     }
     this.$boardContainer.append(tempBoard);
 
-    $('[data-type=1]').html(this.imgize(this.playerColor));
+    $('[data-type=1]').html(this.imgize(this.playerColor))
+      .css('z-index', '999');
+      
     $('[data-type=2]').html(this.imgize(this.enemyColor));
+    $('[data-type=5]').html(this.imgize(this.goldColor));
 
 
     $('.square').css('width',((100 / board.width) + '%'))
@@ -59,9 +62,11 @@ var UI = function(board) {
     if(typeof rem !== 'undefined') {
       this._selectCoor(rem.x, rem.y).html(this.imgize(this.defaultColor));
     }
-   
-    this._selectCoor(add.x, add.y).html(this.imgize(this.typeDic[type]));
-
+    var addSelector = this._selectCoor(add.x, add.y);
+    addSelector.html(this.imgize(this.typeDic[type]));
+    if (type === 1) {
+      addSelector.css('z-index', '999');
+    }
     console.timeEnd('ui.renderChanges');
   };
 

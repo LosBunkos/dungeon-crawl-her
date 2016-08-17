@@ -78,7 +78,9 @@ var Board = function(width, ui, height) {
     } else if (obj1.type === 1 && obj2.type === 4) {
       obj1.win();
     } else if (obj1.type === 1 && obj2.type === 5) {
-      obj1.getScore(100);
+      obj1.updateScore(1000);
+      this.delObj(obj2);
+      return true;
     } else {
       return true;
     }

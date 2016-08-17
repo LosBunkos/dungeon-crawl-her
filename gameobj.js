@@ -2,9 +2,15 @@ var gameObj = function(board, startingPos) {
   this.alive = true;
   this.pos = startingPos;
   this.type = 2;
+  this.score = 0;
   this.go = function(direction){
     board.go(this, direction);
     return true;
+  };
+
+  this.updateScore = function(num) {
+    this.score += num;
+    $('#score-number').text(this.score);
   };
 
   this.die = function() {
@@ -26,6 +32,7 @@ var gameObj = function(board, startingPos) {
     $('#refresh').text("Play again!").css('display', 'inline-block').on('click', function() {
       location.reload();
     });
+    this.updateScore(10000)
   }
 
   this.autoAct = function(){};
