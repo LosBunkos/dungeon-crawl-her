@@ -26,8 +26,8 @@ handleClicks = function() {
   }
 
   $(document).keydown(function(e) {
-    e.preventDefault();
     if (e.keyCode < 41) {
+      e.preventDefault();
       console.log(e.which);
       move = e.keyCode;
     } else {

@@ -209,6 +209,12 @@ var Board = function(width, ui, height) {
     if (collisions.length != 0) {
       //console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
       // this.collide(collisions[0], obj);
+
+      // instead of assigning this.collide's 
+      // return value to err, which causes a problem
+      // if err == true & collide == false
+      // (muting the previous error), we use || 
+      // so that if err was true, it stays true.
       err = err || !this.collide(obj, collisions[0]);
     }
 

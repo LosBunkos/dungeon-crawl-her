@@ -60,13 +60,25 @@ var UI = function(board) {
   this.renderChanges = function(add, type, rem) {
     //console.time('ui.renderChanges');
     if(typeof rem !== 'undefined') {
-      this._selectCoor(rem.x, rem.y).html(this.imgize(this.defaultColor));
+      this._selectCoor(rem.x, rem.y).html('');
     }
+    
+    // save selector to variable
     var addSelector = this._selectCoor(add.x, add.y);
-    addSelector.html(this.imgize(this.typeDic[type]));
-    if (type === 1) {
-      addSelector.css('z-index', '999');
+
+    // instead of changing to transparent img, del html content
+    if (type === 0) {
+      addSelector.html('')
+    // if not changine to transparent, regular img changing.
+    } else {
+      addSelector.html(this.imgize(this.typeDic[type]));
+
+      // player on top
+      if (type === 1) {
+        addSelector.css('z-index', '999');
+      }
     }
+    
     //console.timeEnd('ui.renderChanges');
   };
 
