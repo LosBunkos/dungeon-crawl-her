@@ -13,6 +13,9 @@ var gameObj = function(board, startingPos) {
     board.delObj(this);
     $('#ded').text("You have reached\nYour final destination.").css('text-align', 'center');
     // setTimeout(location.reload, 2500);
+    $('#refresh').css('display', 'inline-block').on('click', function() {
+      location.reload();
+    });
   };
   this.autoAct = function(){};
 };
