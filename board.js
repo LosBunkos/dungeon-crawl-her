@@ -197,16 +197,15 @@ var Board = function(width, ui, height) {
       err = true;
     }
 
-    // filter gameObjs by position - 
-    // fills 'collisions' array with objects that 
-    // have the same position as where we're trying to go
-    // we should NEVER have collisions.length > 1
-    var collisions = this.gameObjs.filter(function(obj) {
-      return (newPos.y === obj.pos.y) &&
-             (newPos.x === obj.pos.x);
-    });
+    var collision = '';
+     for (var i = 0; i < this.gameObjs.length; i++) {
+      if ((newPos.y === this.gameObjs[i].pos.y) &&
+       (newPos.x === this.gameObjs[i].pos.x)) {
+        collision = this.gameObjs[i];
+      }
+    };
     // if we found collisions
-    if (collisions.length != 0) {
+    if (collision != '') {
       //console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
       // this.collide(collisions[0], obj);
 
@@ -215,7 +214,7 @@ var Board = function(width, ui, height) {
       // if err == true & collide == false
       // (muting the previous error), we use || 
       // so that if err was true, it stays true.
-      err = err || !this.collide(obj, collisions[0]);
+      err = err || !this.collide(obj, collision);
     }
 
     // half-assed death implementation

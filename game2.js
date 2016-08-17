@@ -1,9 +1,18 @@
 var stopAll = function() {
-  clearInterval(mov1);
-  clearInterval(mov2);
-  clearInterval(mov3);
-  clearInterval(mov4);
-  clearInterval(mov5);
-  clearInterval(mov6);
-  clearInterval(mov7);
+  intervals.forEach(function(interval) {
+    clearInterval(interval);
+  });
+}
+
+var cleanBoard = function() {
+  stopAll();
+  ui = null;
+  board.gameObjs.forEach(function(obj) {
+    obj = null;
+  });
+  board = null;
+}
+
+var renderBoard2 = function() {
+
 }

@@ -8,7 +8,7 @@
 // board.addAllObjsToBoard();
 // var ui = new UI(board);
 // ui.initBoard();
-handleClicks = function() {
+handleClicks = function(board) {
 
   var keyToDirection = {
     '37' : 'left',
@@ -19,6 +19,11 @@ handleClicks = function() {
     'w' : 'up',
     'd' : 'right',
     's' : 'down',
+    'A' : 'left',
+    'W' : 'up',
+    'D' : 'right',
+    'S' : 'down',
+
   }
   var move;
   if (typeof callback == 'function') {
@@ -35,7 +40,7 @@ handleClicks = function() {
     }
     console.group('keypress');
     console.info('Notice: got keystroke: ' + move + ' (keyboard)');
-    board.player.go(keyToDirection[move]);
+    board.go(board.player, keyToDirection[move]);
     console.groupEnd('keypress');
   });
 }
