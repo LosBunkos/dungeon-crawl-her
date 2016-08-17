@@ -37,7 +37,7 @@ div .square {
   position: relative;
 }
 
-h1, h2 {
+h1, h2, #ded {
   font-family: 'Bungee Shade', cursive;
   color: #F15923;
   letter-spacing: 2px;
@@ -93,6 +93,10 @@ h1, h2 {
   text-align: center;
 }
 
+.arrow {
+  margin-top: 170px;
+}
+
 /* ================================= 
   Media Queries
 ==================================== */
@@ -144,3 +148,48 @@ h1, h2 {
   }
 
 }
+
+/* Animations */
+
+/*.animate {
+    width: 61px;
+    height: 75px;
+    background-image: url("img/her0-sprite2.png");
+    
+    -webkit-animation: play .8s steps(10) infinite;
+       -moz-animation: play .8s steps(10) infinite;
+        -ms-animation: play .8s steps(10) infinite;
+         -o-animation: play .8s steps(10) infinite;
+            animation: play .8s steps(10) infinite;
+}
+
+@-webkit-keyframes play {
+   from { background-position:    0px; }
+     to { background-position: -500px; }
+}
+
+@-moz-keyframes play {
+   from { background-position:    0px; }
+     to { background-position: -500px; }
+}
+
+@-ms-keyframes play {
+   from { background-position:    0px; }
+     to { background-position: -500px; }
+}
+
+@-o-keyframes play {
+   from { background-position:    0px; }
+     to { background-position: -500px; }
+}
+
+@keyframes play {
+   from { background-position:    0px; }
+     to { background-position: -500px; }
+}*/
+
+
+
+
+
+
