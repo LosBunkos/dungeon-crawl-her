@@ -27,7 +27,7 @@ var UI = function(board) {
 
 
   this.initBoard = function() {
-    console.time('ui.initBoard');
+    //console.time('ui.initBoard');
     var tempBoard = '' ;
     this.$boardContainer.empty();
 
@@ -48,7 +48,7 @@ var UI = function(board) {
     $('.square').css('width',((100 / board.width) + '%'))
       .css('height',((100 / board.height) + '%'));
 
-    console.timeEnd('ui.initBoard');
+    //console.timeEnd('ui.initBoard');
   };
 
   this._selectCoor = function(x, y) {
@@ -58,7 +58,7 @@ var UI = function(board) {
   // Accepts coordinates to turn white
   // And array of coordinates to color according to type. 
   this.renderChanges = function(add, type, rem) {
-    console.time('ui.renderChanges');
+    //console.time('ui.renderChanges');
     if(typeof rem !== 'undefined') {
       this._selectCoor(rem.x, rem.y).html(this.imgize(this.defaultColor));
     }
@@ -67,7 +67,7 @@ var UI = function(board) {
     if (type === 1) {
       addSelector.css('z-index', '999');
     }
-    console.timeEnd('ui.renderChanges');
+    //console.timeEnd('ui.renderChanges');
   };
 
 

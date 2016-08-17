@@ -16,13 +16,14 @@ var gameObj = function(board, startingPos) {
 
   this.die = function() {
     this.alive = false;
-    console.log(this.alive);
+    //console.log(this.alive);
     board.delObj(this);
     $('#ded').text("You have reached\nYour final destination.").css('text-align', 'center');
     // setTimeout(location.reload, 2500);
     $('#refresh').css('display', 'inline-block').on('click', function() {
       location.reload();
     });
+    stopAll();
   };
 
   this.win = function() {
@@ -37,7 +38,7 @@ var gameObj = function(board, startingPos) {
       this.updateScore(10000);
     }
     this.won = true;
-    clearLevelOne();
+    stopAll();
   }
 };
 
@@ -74,7 +75,7 @@ var gameObj = function(board, startingPos) {
 //   var that = this;
 //   this.autoAct = function() {
 //     setInterval(function() {
-//       console.log(that);
+//       //console.log(that);
 //       that.go(direction);
 //     }, speed);
 //   // this.autoAct();

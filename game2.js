@@ -1,4 +1,4 @@
-var clearLevelOne = function() {
+var stopAll = function() {
   clearInterval(mov1);
   clearInterval(mov2);
   clearInterval(mov3);
