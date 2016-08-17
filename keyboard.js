@@ -8,7 +8,7 @@
 // board.addAllObjsToBoard();
 // var ui = new UI(board);
 // ui.initBoard();
-handleClicks = function() {
+handleClicks = function(callback) {
   var keyToDirection = {
     'w' : 'up',
     's' : 'down',
@@ -16,6 +16,9 @@ handleClicks = function() {
     'd' : 'right'
   }
   var move;
+  if (typeof callback == 'function') {
+    callback();
+  }
   $(document).keypress(function(e) {
     move = String.fromCharCode(e.which);
     console.group('keypress');
@@ -24,4 +27,3 @@ handleClicks = function() {
     console.groupEnd('keypress');
   });
 }
-handleClicks();

@@ -57,7 +57,10 @@ var Board = function(width, ui, height) {
   this.delObj = function(obj) {
     console.info('>Notice: removing gameObj', obj);
     var idx = this.findObjByID(obj);
-    this.gameObjs.splice(idx, 1);
+    this.board.splice(idx, 1);
+    for (prop in obj) {
+      delete obj.prop;
+    }
   }
 
   // collision handling

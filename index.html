@@ -6,6 +6,7 @@
    <link rel="stylesheet" type="text/css" href="normalize.css">
    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
   <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src='keyboard.js'></script>
 </head>
 <body>
 
@@ -53,7 +54,6 @@
   board.addObj(enemy3);
   board.addObj(enemy4);
   board.addObj(player);
-
   newWall(board, {x:0, y:8}, 10, 2);
   newWall(board, {x:22, y:16}, 12, 2);
 
@@ -62,34 +62,24 @@
 
   var dirs1 = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
   var dirs2 = ['up', 'right', 'down', 'down', 'down', 'left', 'up', 'up'];
-
+  allGo = true;
   var autoAct = function(enemy, dirs, time) {
     var i = 0;
-    setInterval(function() {
-      enemy.go(dirs[i % dirs.length]);
-      i++;
-    }, time);
+    if(allGo) {
+      setInterval(function() {
+        enemy.go(dirs[i % dirs.length]);
+        i++;
+      }, time);
+    }
   }
 
+  handleClicks();
   autoAct(enemy1, dirs1, 500);
   autoAct(enemy2, dirs2, 400);
   autoAct(enemy3, dirs1, 250);
   autoAct(enemy4, dirs1, 300);
   autoAct(enemy5, dirs2, 350);
 
-
-
-  var keyToDirection = {
-    'w' : 'up',
-    's' : 'down',
-    'a' : 'left',
-    'd' : 'right'
-  }
-
-initAll();
-
-
 </script>
-<script type="text/javascript" src='keyboard.js'></script>
 </body>
 </html>
