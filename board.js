@@ -57,18 +57,17 @@ var Board = function(width, ui, height) {
   this.delObj = function(obj) {
     console.info('>Notice: removing gameObj', obj);
     var idx = this.findObjByID(obj);
-    this.board[obj.pos.y][obj.pos.x];
-    this.board.splice(idx, 1);
+    this.board[obj.pos.y][obj.pos.x] = 0;
+    this.ui.renderChanges({x: obj.pos.x, y: obj.pos.y}, 0);
+    this.gameObjs.splice(idx, 1);
   }
 
   // collision handling
   this.collide = function(obj1, obj2) {
-    console.log(obj1, obj2);
-    // debugger;
     if (obj1.type === 1 && obj2.type === 2) {
       obj1.die();
     } else if (obj1.type === 2 && obj2.type === 1) {
-      obj2.die()
+      obj2.die();
     } else {
       return true;
     }
@@ -195,7 +194,7 @@ var Board = function(width, ui, height) {
           '} (_safelyGo)');
       // update board 'state'
       obj.prevPos = currPos;
-      obj.pos = newPos;
+      obj.pos = newPos; 
       this.board[obj.prevPos.y][obj.prevPos.x] = 0;
       this.board[obj.pos.y][obj.pos.x] = obj.type;
     }
