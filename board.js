@@ -74,8 +74,11 @@ var Board = function(width, ui, height) {
     // Check if we're hitting an enemy
     if (obj1.type === 1 && obj2.type === 2) {
       obj1.die();
+      return true;
+
     } else if (obj1.type === 2 && obj2.type === 1) {
       obj2.die();
+
 
     // Check whether we're winning
     } else if (obj1.type === 1 && obj2.type === 4) {
@@ -94,8 +97,8 @@ var Board = function(width, ui, height) {
       return false;
 
     // any other collision
-    }  else {
-      return true;
+    // }  else {
+    //   return false;
     }
 
     // default
