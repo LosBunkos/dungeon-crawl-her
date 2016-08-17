@@ -63,10 +63,10 @@ gold4.type = 5;
 
 // Create Walls
 newWall(board, {x:0, y:8}, 10, 2);
-newWall(board, {x:22, y:16}, 12, 2);
+newWall(board, {x:23, y:16}, 11, 2);
 
 // and door
-newWall(board, {x:31, y:18}, 2, 7, 4);
+newWall(board, {x:32, y:18}, 1, 7, 4);
 
 
 // Add Everyone
