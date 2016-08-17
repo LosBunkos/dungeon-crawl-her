@@ -64,12 +64,21 @@ var Board = function(width, ui, height) {
 
   // collision handling
   this.collide = function(obj1, obj2) {
+    // key:
+    // 1 = player
+    // 2 = monster
+    // 3 = wall
+    // 4 = door
+    // 5 = gold (score)
+
     if (obj1.type === 1 && obj2.type === 2) {
       obj1.die();
     } else if (obj1.type === 2 && obj2.type === 1) {
       obj2.die();
     } else if (obj1.type === 1 && obj2.type === 4) {
       obj1.win();
+    } else if (obj1.type === 1 && obj2.type === 5) {
+      obj1.getScore(100);
     } else {
       return true;
     }

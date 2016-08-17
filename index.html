@@ -63,12 +63,17 @@ var enemy5 = new gameObj(board, {x:18, y:10});
 var enemy6 = new gameObj(board, {x:2, y:12});
 var enemy7 = new gameObj(board, {x:11, y:10});
 
+// create gold
+var gold1 = new gameObj(board, {x:0, y:23});
+gold1.type = 5;
+
 // Create Walls
 newWall(board, {x:0, y:8}, 10, 2);
 newWall(board, {x:22, y:16}, 12, 2);
 
 // and door
 newWall(board, {x:31, y:18}, 2, 7, 4);
+
 
 // Add Everyone
 board.addObj(enemy1);
