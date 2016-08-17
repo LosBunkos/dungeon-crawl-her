@@ -96,6 +96,10 @@ var Board = function(width, ui, height) {
     console.groupEnd('init');
     console.log(''); // spacing
 
+    // Clean board first
+    this.board = [];
+    this.gameObjs = [];
+
     this.board = this._generate();
     if(typeof this.ui !== 'undefined') {
       this.ui.initBoard();

@@ -7,12 +7,12 @@ var gameObj = function(board, startingPos) {
     return true;
   };
   this.die = function() {
+    this.alive = false;
     $('#ded').html("YO DED BRAH").css('text-align', 'center');
     board.gameObjs.forEach(function (obj) {
       console.log('board:', board)
       // board.delObj(obj);
     });
-    allGo = false;
   };
   this.autoAct = function(){};
   this.onCollision = function(obj) {

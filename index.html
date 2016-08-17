@@ -35,50 +35,55 @@
 
 <script>
 // Just for testing purposes
-  var board = new Board(25);
-  board.width = 33;
-  var ui = new UI(board);
-  board.init();
-  ui.initBoard();
-  board.ui = ui;
-  board.init();
-  var player = new gameObj(board, {x:0, y:0});
-  player.type = 1;
-  var enemy1 = new gameObj(board, {x:5, y:7});
-  var enemy2 = new gameObj(board, {x:5, y:15});
-  var enemy3 = new gameObj(board, {x:25, y:3});
-  var enemy4 = new gameObj(board, {x:20, y:20});
-  var enemy5 = new gameObj(board, {x:18, y:10});
-  board.addObj(enemy1);
-  board.addObj(enemy2);
-  board.addObj(enemy3);
-  board.addObj(enemy4);
-  board.addObj(player);
-  newWall(board, {x:0, y:8}, 10, 2);
-  newWall(board, {x:22, y:16}, 12, 2);
+// Board initialization
+var board = new Board(25);
+board.width = 33;
+var ui = new UI(board);
+board.init();
+ui.initBoard();
+board.ui = ui;
+board.init();
+// ui.initBoard(board);
 
-  ui.initBoard(board);
-  console.info('Enemy1:', enemy1);
+var player = new gameObj(board, {x:0, y:0});
+player.type = 1;
+board.player = player;
+var enemy1 = new gameObj(board, {x:5, y:7});
+var enemy2 = new gameObj(board, {x:5, y:15});
+var enemy3 = new gameObj(board, {x:25, y:3});
+var enemy4 = new gameObj(board, {x:20, y:20});
+var enemy5 = new gameObj(board, {x:18, y:10});
 
-  var dirs1 = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
-  var dirs2 = ['up', 'right', 'down', 'down', 'down', 'left', 'up', 'up'];
-  allGo = true;
-  var autoAct = function(enemy, dirs, time) {
-    var i = 0;
-    if(allGo) {
-      setInterval(function() {
-        enemy.go(dirs[i % dirs.length]);
-        i++;
-      }, time);
+board.addObj(enemy1);
+board.addObj(enemy2);
+board.addObj(enemy3);
+board.addObj(enemy4);
+board.addObj(player);
+newWall(board, {x:0, y:8}, 10, 2);
+newWall(board, {x:22, y:16}, 12, 2);
+
+var dirs1 = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
+var dirs2 = ['up', 'right', 'down', 'down', 'down', 'left', 'up', 'up'];
+var autoAct = function(enemy, dirs, time) {
+  var i = 0;
+  return setInterval(function() {
+    enemy.go(dirs[i % dirs.length]);
+    i++;
+    if(!player.alive) {
+      clearInterval(interval);
     }
-  }
+  }, time);
+}
 
-  handleClicks();
-  autoAct(enemy1, dirs1, 500);
-  autoAct(enemy2, dirs2, 400);
-  autoAct(enemy3, dirs1, 250);
-  autoAct(enemy4, dirs1, 300);
-  autoAct(enemy5, dirs2, 350);
+autoAct(enemy1, dirs1, 500);
+autoAct(enemy1, dirs1, 500);
+autoAct(enemy1, dirs1, 500);
+autoAct(enemy2, dirs2, 400);
+autoAct(enemy3, dirs1, 250);
+autoAct(enemy4, dirs1, 300);
+autoAct(enemy5, dirs2, 350);
+
+handleClicks();
 
 </script>
 </body>

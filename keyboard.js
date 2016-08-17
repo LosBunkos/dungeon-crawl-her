@@ -8,7 +8,7 @@
 // board.addAllObjsToBoard();
 // var ui = new UI(board);
 // ui.initBoard();
-handleClicks = function(callback) {
+handleClicks = function() {
   var keyToDirection = {
     'w' : 'up',
     's' : 'down',
@@ -23,7 +23,7 @@ handleClicks = function(callback) {
     move = String.fromCharCode(e.which);
     console.group('keypress');
     console.info('Notice: got keystroke: ' + move + ' (keyboard)');
-    player.go(keyToDirection[move])
+    board.player.go(keyToDirection[move])
     console.groupEnd('keypress');
   });
 }
