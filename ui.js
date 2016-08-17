@@ -3,7 +3,7 @@ var UI = function(board) {
 
 
   this.$boardContainer = $('#board');
-  this.playerColor = 'img/transparent.png';
+  this.playerColor = 'img/hero.png';
   this.defaultColor = 'img/transparent.png';
   this.enemyColor = "img/enemy.png";
   this.wallColor = 'img/transparent.png';
@@ -38,8 +38,6 @@ var UI = function(board) {
     this.$boardContainer.append(tempBoard);
 
     $('[data-type=1]').html(this.imgize(this.playerColor));
-    $('[data-type=1]').find('img').addClass('hero');
-  
     $('[data-type=2]').html(this.imgize(this.enemyColor));
 
 
@@ -62,9 +60,7 @@ var UI = function(board) {
     }
    
     this._selectCoor(add.x, add.y).html(this.imgize(this.typeDic[type]));
-    if (type === 1) {
-      this._selectCoor(add.x, add.y).find('img').addClass('hero');
-    }
+
     console.timeEnd('ui.renderChanges');
   };
 
