@@ -33,13 +33,11 @@ var gameObj = function(board, startingPos) {
     $('#refresh').text("Play again!").css('display', 'inline-block').on('click', function() {
       location.reload();
     });
-    if(this.won) {
+    if(!this.won) {
       this.updateScore(10000);
     }
     this.won = true;
   }
-
-  this.autoAct = function(){};
 };
 
  var newWall = function(board, pos, width, height, type) {
