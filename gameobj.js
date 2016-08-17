@@ -3,6 +3,7 @@ var gameObj = function(board, startingPos) {
   this.pos = startingPos;
   this.type = 2;
   this.score = 0;
+  this.won = false;
   this.go = function(direction){
     board.go(this, direction);
     return true;
@@ -32,7 +33,10 @@ var gameObj = function(board, startingPos) {
     $('#refresh').text("Play again!").css('display', 'inline-block').on('click', function() {
       location.reload();
     });
-    this.updateScore(10000)
+    if(this.won) {
+      this.updateScore(10000);
+    }
+    this.won = true;
   }
 
   this.autoAct = function(){};
