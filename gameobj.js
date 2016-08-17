@@ -37,6 +37,7 @@ var gameObj = function(board, startingPos) {
       this.updateScore(10000);
     }
     this.won = true;
+    clearLevelOne();
   }
 };
 

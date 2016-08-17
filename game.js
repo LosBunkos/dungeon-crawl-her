@@ -88,12 +88,12 @@ board.addObj(gold2);
 board.addObj(gold3);
 board.addObj(gold4);
 
-randomMove(enemy1, 100);
-randomMove(enemy2, 245, 10);
-randomMove(enemy3, 220, 4);
-randomMove(enemy4, 250, 3);
-randomMove(enemy5, 250, 1);
-randomMove(enemy6, 250, 5);
-randomMove(enemy7, 150, 2);
+var mov1 = randomMove(enemy1, 100);
+var mov2 = randomMove(enemy2, 245, 10);
+var mov3 = randomMove(enemy3, 220, 4);
+var mov4 = randomMove(enemy4, 250, 3);
+var mov5 = randomMove(enemy5, 250, 1);
+var mov6 = randomMove(enemy6, 250, 5);
+var mov7 = randomMove(enemy7, 150, 2);
 
 handleClicks();
