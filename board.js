@@ -194,7 +194,7 @@ var Board = function(width, ui, height) {
     if (collisions.length != 0) {
       console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
       // this.collide(collisions[0], obj);
-      err = this.collide(obj, collisions[0]);
+      err = !this.collide(obj, collisions[0]);
     }
 
     // half-assed death implementation
