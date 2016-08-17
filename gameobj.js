@@ -20,14 +20,18 @@ var gameObj = function(board, startingPos) {
   this.autoAct = function(){};
 };
 
- var newWall = function(board, pos, width, height) {
+ var newWall = function(board, pos, width, height, type) {
     // coor: {x: ..., y: ...}
-    this.pos = pos;
+    // default
+    if (typeof type === 'undefined') {
+      type = 3;
+    }
+
     for (var i = 0; i < height; i++) {
       for (var j = 0; j < width; j++) {
         var tempPos = {y: pos.y + i, x: pos.x + j}
         var tempObj = new gameObj(board, tempPos);
-        tempObj.type = 3;
+        tempObj.type = type;
         board.addObj(tempObj);
       }
     }

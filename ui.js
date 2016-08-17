@@ -41,8 +41,8 @@ var UI = function(board) {
     $('[data-type=2]').html(this.imgize(this.enemyColor));
 
 
-    $('.square').css('width',((100 / board.width) + '%'));
-    $('.square').css('height',((100 / board.height) + '%'));
+    $('.square').css('width',((100 / board.width) + '%'))
+      .css('height',((100 / board.height) + '%'));
 
     console.timeEnd('ui.initBoard');
   };
