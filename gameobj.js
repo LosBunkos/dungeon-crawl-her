@@ -6,11 +6,13 @@ var gameObj = function(board, startingPos) {
     board.go(this, direction);
     return true;
   };
+
   this.die = function() {
     this.alive = false;
     console.log(this.alive);
     board.delObj(this);
     $('#ded').text("You have reached\nYour final destination.").css('text-align', 'center');
+    // setTimeout(location.reload, 2500);
   };
   this.autoAct = function(){};
 };
