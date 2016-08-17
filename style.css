@@ -37,7 +37,7 @@ div .square {
   position: relative;
 }
 
-h1, h2 {
+h1, h2, #ded {
   font-family: 'Bungee Shade', cursive;
   color: #F15923;
   letter-spacing: 2px;
