@@ -8,16 +8,11 @@ var gameObj = function(board, startingPos) {
   };
   this.die = function() {
     this.alive = false;
-    $('#ded').html("YO DED BRAH").css('text-align', 'center');
-    board.gameObjs.forEach(function (obj) {
-      console.log('board:', board)
-      // board.delObj(obj);
-    });
+    console.log(this.alive);
+    board.delObj(this);
+    $('#ded').text("You have reached\nYour final destination.").css('text-align', 'center');
   };
   this.autoAct = function(){};
-  this.onCollision = function(obj) {
-    board.delObj(this);
-  }
 };
 
  var newWall = function(board, pos, width, height) {

@@ -19,7 +19,7 @@
         <h1>Dungeon Crawler</h1>
         <div class="score-info">
           <h2 class="score-title">SCORE</h2>
-          <h1 id='ded'></h1>
+          <h4 id='ded'></h4>
         </div>
         <div class="arrow">
           <img src="img/finish.png">
@@ -72,9 +72,6 @@ var autoAct = function(enemy, dirs, time) {
   return setInterval(function() {
     enemy.go(dirs[i % dirs.length]);
     i++;
-    if(!player.alive) {
-      clearInterval(interval);
-    }
   }, time);
 }
 

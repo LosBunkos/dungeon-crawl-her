@@ -57,10 +57,8 @@ var Board = function(width, ui, height) {
   this.delObj = function(obj) {
     console.info('>Notice: removing gameObj', obj);
     var idx = this.findObjByID(obj);
+    this.board[obj.pos.y][obj.pos.x];
     this.board.splice(idx, 1);
-    for (prop in obj) {
-      delete obj.prop;
-    }
   }
 
   // collision handling
@@ -182,6 +180,12 @@ var Board = function(width, ui, height) {
       console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
       // this.collide(collisions[0], obj);
       err = this.collide(collisions[0], obj);
+    }
+
+    // half-assed death implementation
+    if (!obj.alive) {
+      console.warn("Warning: Can't move - u ded")
+      err = true;
     }
 
     // if everything ok, proceed with moving the obj.
