@@ -43,11 +43,8 @@
 var board = new Board(25);
 board.width = 33;
 var ui = new UI(board);
-board.init();
-ui.initBoard();
 board.ui = ui;
 board.init();
-// ui.initBoard(board);
 
 // Create Player
 var player = new gameObj(board, {x:0, y:0});
