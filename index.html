@@ -21,6 +21,7 @@
         <div class="score-info">
           <h2 class="score-title">SCORE</h2>
           <h4 id='ded'></h4>
+          <button id='refresh' style='display:none'>Try Again!</button>
         </div>
 
         <div class="arrow">
@@ -76,12 +77,27 @@ var autoAct = function(enemy, dirs, time) {
     i++;
   }, time);
 }
+var randomAct = function(enemy, time, changeEvery) {
+  if (typeof changeEvery === 'undefined') {
+    changeEvery = 2;
+  }
+  var i = 0;
+  return setInterval(function() {
+    var dirs = ['up', 'down', 'right', 'left'];
+    var dir = '';
+    if (i % changeEvery == 0) {
+      var num = Math.floor(Math.random() * 4);
+      dir = dirs[num];
+    }
+    enemy.go(dir);
+  }, time)
+}
 
-autoAct(enemy1, dirs1, 500);
-autoAct(enemy2, dirs2, 400);
-autoAct(enemy3, dirs1, 250);
-autoAct(enemy4, dirs1, 300);
-autoAct(enemy5, dirs2, 350);
+randomAct(enemy1, 100);
+randomAct(enemy2, 125);
+randomAct(enemy3, 120, 2);
+randomAct(enemy4, 150, 3);
+randomAct(enemy5, 250, 1);
 
 handleClicks();
 
