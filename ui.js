@@ -54,23 +54,28 @@ var UI = function(board) {
   this._selectCoor = function(x, y) {
     return  $('#y-' + y + '-x-' + x);
   };
-
-  // Accepts coordinates to turn white
-  // And array of coordinates to color according to type. 
   this.renderChanges = function(add, type, rem) {
     //console.time('ui.renderChanges');
-    if(typeof rem !== 'undefined') {
-      this._selectCoor(rem.x, rem.y).html('');
+
+    function removeImg(x,y) {
+      // vanilla, for performance
+      var toRem = document.getElementById('y-' + y + '-x-' + x);
+      if(typeof toRem == 'object') {
+        toRem.removeChild(toRem.firstChild);
+      }
     }
-    
-    // save selector to variable
-    var addSelector = this._selectCoor(add.x, add.y);
+
+    if(typeof rem !== 'undefined') {
+      removeImg(rem.x, rem.y);
+    }
 
     // instead of changing to transparent img, del html content
     if (type === 0) {
-      addSelector.html('')
+      removeImg(add.x, add.y);
+      
     // if not changine to transparent, regular img changing.
     } else {
+      var addSelector = this._selectCoor(add.x, add.y);
       addSelector.html(this.imgize(this.typeDic[type]));
 
       // player on top
