@@ -68,6 +68,8 @@ var Board = function(width, ui, height) {
       obj1.die();
     } else if (obj1.type === 2 && obj2.type === 1) {
       obj2.die();
+    } else if (obj1.type === 1 && obj2.type === 4) {
+      obj1.win();
     } else {
       return true;
     }
@@ -178,7 +180,7 @@ var Board = function(width, ui, height) {
     if (collisions.length != 0) {
       console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
       // this.collide(collisions[0], obj);
-      err = this.collide(collisions[0], obj);
+      err = this.collide(obj, collisions[0]);
     }
 
     // half-assed death implementation

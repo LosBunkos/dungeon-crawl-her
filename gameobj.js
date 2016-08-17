@@ -17,6 +17,17 @@ var gameObj = function(board, startingPos) {
       location.reload();
     });
   };
+
+  this.win = function() {
+    // make player invincible
+    this.die = function(){};
+    $('#ded').text("YOU WON BROOO!!!1").css('text-align', 'center');
+    // setTimeout(location.reload, 2500);
+    $('#refresh').text("Play again!").css('display', 'inline-block').on('click', function() {
+      location.reload();
+    });
+  }
+
   this.autoAct = function(){};
 };
 
