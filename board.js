@@ -120,7 +120,7 @@ var Board = function(width, ui, height) {
     console.group('init');
     console.info('Notice: Board initialized');
     console.info('Head at {' + x + ',' + y + '}.');
-    console.info('Size:', width, 'x', height, '(' + (height * width) + ' divs)\n');
+    console.info('Size:', this.width, 'x', this.height, '(' + (this.height * this.width) + ' divs)\n');
     console.groupEnd('init');
     console.log(''); // spacing
 
