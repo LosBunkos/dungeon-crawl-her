@@ -17,10 +17,9 @@ var UI = function(board) {
   }
 
   this.divTemp = function(x, y, type) {
-    return "<div data-x='" + x +
-              "' data-y='" + y +
-              "' data-type='" + type + 
-              "'class='square'>" +
+    return "<div id='y-" + y + "-x-" + x + "'" +
+              "data-type='" + type + "'" +
+              "class='square'>" +
            "</div>";
   };
 
@@ -48,7 +47,7 @@ var UI = function(board) {
   };
 
   this._selectCoor = function(x, y) {
-    return  $('[data-y=' + y + '][data-x=' + x + ']');
+    return  $('#y-' + y + '-x-' + x);
   };
 
   // Accepts coordinates to turn white
