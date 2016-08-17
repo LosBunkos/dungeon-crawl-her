@@ -59,11 +59,16 @@ var enemy2 = new gameObj(board, {x:5, y:15});
 var enemy3 = new gameObj(board, {x:25, y:3});
 var enemy4 = new gameObj(board, {x:20, y:20});
 var enemy5 = new gameObj(board, {x:18, y:10});
+var enemy6 = new gameObj(board, {x:2, y:12});
+var enemy7 = new gameObj(board, {x:11, y:10});
 
 board.addObj(enemy1);
 board.addObj(enemy2);
 board.addObj(enemy3);
 board.addObj(enemy4);
+board.addObj(enemy5);
+board.addObj(enemy6);
+board.addObj(enemy7);
 board.addObj(player);
 newWall(board, {x:0, y:8}, 10, 2);
 newWall(board, {x:22, y:16}, 12, 2);
@@ -82,22 +87,25 @@ var randomAct = function(enemy, time, changeEvery) {
     changeEvery = 2;
   }
   var i = 0;
+  var dir = '';
   return setInterval(function() {
     var dirs = ['up', 'down', 'right', 'left'];
-    var dir = '';
     if (i % changeEvery == 0) {
       var num = Math.floor(Math.random() * 4);
       dir = dirs[num];
     }
     enemy.go(dir);
+    i++;
   }, time)
 }
 
 randomAct(enemy1, 100);
-randomAct(enemy2, 125);
-randomAct(enemy3, 120, 2);
+randomAct(enemy2, 105, 10);
+randomAct(enemy3, 120, 4);
 randomAct(enemy4, 150, 3);
 randomAct(enemy5, 250, 1);
+randomAct(enemy6, 50, 5);
+randomAct(enemy7, 50, 2);
 
 handleClicks();
 
