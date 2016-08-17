@@ -71,12 +71,19 @@ var Board = function(width, ui, height) {
     // 4 = door
     // 5 = gold (score)
 
+    // Check if we're hitting an enemy
     if (obj1.type === 1 && obj2.type === 2) {
       obj1.die();
+      return true;
+
     } else if (obj1.type === 2 && obj2.type === 1) {
       obj2.die();
+
+
+    // Check whether we're winning
     } else if (obj1.type === 1 && obj2.type === 4) {
       obj1.win();
+      return true;
     } else if (obj1.type === 1 && obj2.type === 5) {
       if (obj1.won) {
         return true;
@@ -84,9 +91,17 @@ var Board = function(width, ui, height) {
       obj1.updateScore(1000);
       this.delObj(obj2);
       return true;
-    } else {
-      return true;
+
+    // jew monsters don't take my gold!!
+    } else if (obj1.type === 2 && obj2.type === 5) {
+      return false;
+
+    // any other collision
+    // }  else {
+    //   return false;
     }
+
+    // default
     return false;
   }
 
@@ -194,7 +209,7 @@ var Board = function(width, ui, height) {
     if (collisions.length != 0) {
       console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
       // this.collide(collisions[0], obj);
-      err = !this.collide(obj, collisions[0]);
+      err = err || !this.collide(obj, collisions[0]);
     }
 
     // half-assed death implementation
