@@ -6,7 +6,10 @@ var gameObj = function(board, startingPos) {
     board.go(this, direction);
     return true;
   };
-  this.die = function(){};
+  this.die = function() {
+    $('#ded').html("YO DED BRAH");
+    initAll();
+  };
   this.autoAct = function(){};
   this.onCollision = function(obj) {
     board.delObj(this);

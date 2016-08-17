@@ -62,8 +62,16 @@ var Board = function(width, ui, height) {
 
   // collision handling
   this.collide = function(obj1, obj2) {
-    obj1.onCollision(obj2);
-    obj2.onCollision(obj1);
+    console.log(obj1, obj2);
+    // debugger;
+    if (obj1.type === 1 && obj2.type === 2) {
+      obj1.die();
+    } else if (obj1.type === 2 && obj2.type === 1) {
+      obj2.die()
+    } else {
+      return true;
+    }
+    return false;
   }
 
 
@@ -166,7 +174,7 @@ var Board = function(width, ui, height) {
     if (collisions.length != 0) {
       console.warn("Warning:", obj.id, "would collide with", collisions[0].id);
       // this.collide(collisions[0], obj);
-      err = true;
+      err = this.collide(collisions[0], obj);
     }
 
     // if everything ok, proceed with moving the obj.
