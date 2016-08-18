@@ -1,5 +1,5 @@
 var intervals = [];
-
+var score = 0;
 var stopAll = function(intervals) {
   intervals.forEach(function(interval) {
     clearInterval(interval);
@@ -15,9 +15,12 @@ var flushBoard = function() {
 var cleanBoard = function(board) {
   stopAll(intervals);
   ui = null;
-  board.gameObjs.splice(0, board.gameObjs.length);
+  // board.gameObjs.splice(0, board.gameObjs.length);
+  board.gameObjs.forEach(function(obj) {
+    board.delObj(obj);
+  });
   board.isActive = false;
-  // board = null;
+  board = null;
   flushBoard();
 }
 

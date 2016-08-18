@@ -1,7 +1,8 @@
-var intervals = []; 
+var intervals2 = []; 
 var renderBoard2 = function() {
+  intervals = intervals2;
   $('#board').css({
-    'padding-top' : '40px',
+    'padding-left' : '40px',
     'padding-right': '20px',
     'padding-top': '100px', 
     'padding-bottom': '20px', 
@@ -42,10 +43,10 @@ var player = new gameObj(board2, {x:0, y:0});
 
   // Create Walls
   newWall(board2, {x:27, y:17}, 1, 8);
-  newWall(board2, {x:8, y:17}, 1, 8);
+  newWall(board2, {x:7, y:17}, 1, 8);
   // and water
-  newWall(board2, {x:0, y:9}, 20, 4);
-  newWall(board2, {x:26, y:9}, 6, 4);
+  newWall(board2, {x:0, y:8}, 19, 5);
+  newWall(board2, {x:26, y:8}, 6, 5);
   // and door
   newWall(board2, {x:32, y:18}, 1, 7, 4);
 
@@ -69,9 +70,9 @@ var player = new gameObj(board2, {x:0, y:0});
   var mov2 = randomMove(enemy2, 245, 10);
   var mov3 = randomMove(enemy3, 220, 4);
 
-  intervals.push(mov1);
-  intervals.push(mov2);
-  intervals.push(mov3);
+  intervals2.push(mov1);
+  intervals2.push(mov2);
+  intervals2.push(mov3);
 
   handleClicks(board2);
 

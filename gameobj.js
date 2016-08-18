@@ -10,8 +10,8 @@ var gameObj = function(board, startingPos) {
   };
 
   this.updateScore = function(num) {
-    this.score += num;
-    $('#score-number').text(this.score);
+    score += num;
+    $('#score-number').text(score);
   };
 
   this.die = function() {
