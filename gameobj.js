@@ -2,6 +2,7 @@ var gameObj = function(board, startingPos) {
   this.alive = true;
   this.pos = startingPos;
   this.type = 2;
+  this.lvl = 1;
   this.score = 0;
   this.won = false;
   this.go = function(direction){
@@ -28,13 +29,23 @@ var gameObj = function(board, startingPos) {
   };
 
   this.win = function() {
-    // make player invincible
+    // make player invincible without causing errors
+    // if die() is called
     this.die = function(){};
-    $('#ded').text("YOU WON BROOO!!!1").css('text-align', 'center');
     // setTimeout(location.reload, 2500);
-    $('#refresh').text("Play again!").css('display', 'inline-block').on('click', function() {
-      location.reload();
-    });
+
+    if (this.lvl == 1) {
+      $('#refresh').text("Go to level 2!").css('display', 'inline-block').on('click', function() {
+        cleanBoard(board); flushBoard(); renderBoard2();
+
+      $('#ded').text("You won level 1").css('text-align', 'center');
+      });
+    } else {
+      $('#refresh').text("Play again").css('display', 'inline-block').on('click', function() {
+        location.reload();
+      });
+      $('#ded').text("You won!").css('text-align', 'center');
+    }
     if(!this.won) {
       this.updateScore(10000);
     }

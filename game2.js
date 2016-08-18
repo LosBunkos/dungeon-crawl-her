@@ -1,6 +1,10 @@
 var intervals2 = []; 
 var renderBoard2 = function() {
   intervals = intervals2;
+
+  // remove 'go to level 2' button
+  $('#refresh').css('display', 'none')
+
   $('#board').css({
     'padding-left' : '40px',
     'padding-right': '20px',
@@ -24,6 +28,7 @@ var renderBoard2 = function() {
 
 var player = new gameObj(board2, {x:0, y:0});
   player.type = 1;
+  player.lvl = 2;
   board2.player = player;
 
   // Create Enemies
