@@ -41,6 +41,8 @@ var player = new gameObj(board2, {x:0, y:0});
   var enemy3 = new gameObj(board2, {x:25, y:3});
   var enemy4 = new gameObj(board2, {x:18, y:8});
   var enemy5 = new gameObj(board2, {x:23, y:15});
+  var enemy6 = new gameObj(board2, {x:1, y:16});
+  var enemy7 = new gameObj(board2, {x:20, y:10});
 
   // create gold
   var gold1 = new gameObj(board2, {x:2, y:2});
@@ -54,7 +56,9 @@ var player = new gameObj(board2, {x:0, y:0});
 
   // Create Chest
   var chest1 = new gameObj(board2, {x:4, y:22});
+  var chest2 = new gameObj(board2, {x:5, y:23});
   chest1.type = 6;
+  chest2.type = 6;
 
   // Create Walls
   newWall(board2, {x:27, y:17}, 1, 8);
@@ -73,6 +77,8 @@ var player = new gameObj(board2, {x:0, y:0});
   board2.addObj(enemy3);
   board2.addObj(enemy4);
   board2.addObj(enemy5);
+  board2.addObj(enemy6);
+  board2.addObj(enemy7);
 
   // Player
   board2.addObj(player);
@@ -88,16 +94,22 @@ var player = new gameObj(board2, {x:0, y:0});
 
 
   var mov1 = randomMove(enemy1, 100);
-  var mov2 = randomMove(enemy2, 245, 5);
-  var mov3 = randomMove(enemy3, 220, 4);
-  var mov4 = randomMove(enemy4, 180, 2);
-  var mov5 = randomMove(enemy5, 200, 6);
+  var mov2 = randomMove(enemy2, 215, 5);
+  var mov3 = randomMove(enemy3, 200, 4);
+  var mov4 = randomMove(enemy4, 160, 2);
+  var mov5 = randomMove(enemy5, 180, 6);
+  var mov6 = randomMove(enemy6, 280, 1);
+  var mov7 = autoMove(enemy7, 
+    ['right', 'right', 'right', 'left', 'left', 'left']
+  ,200);
 
   intervals2.push(mov1);
   intervals2.push(mov2);
   intervals2.push(mov3);
   intervals2.push(mov4);
   intervals2.push(mov5);
+  intervals2.push(mov6);
+  intervals2.push(mov7);
 
   handleClicks(board2);
 
