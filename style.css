@@ -12,17 +12,6 @@ body {
   background: url('img/bg-main-min.jpg') no-repeat;
 }
 
-/*img {
-  max-width: 100%;
-}*/
-
-/*.square > img {
-  margin: 0 auto;
-  position: relative;
-  left: 0;
-  top: 0;
-}*/
-
 p {
   font-size: .95em;
   margin-bottom: 1.8em;

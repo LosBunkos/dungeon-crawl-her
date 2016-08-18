@@ -11,11 +11,13 @@
 handleClicks = function(board) {
 
   var keyToDirection = {
+    // Arrow key-codes
     '37' : 'left',
     '38' : 'up',
     '39' : 'right',
     '40' : 'down',
 
+    // wasd & WASD (caps)
     'a' : 'left',
     'w' : 'up',
     'd' : 'right',
@@ -28,10 +30,6 @@ handleClicks = function(board) {
 
   }
   var move;
-  if (typeof callback == 'function') {
-    callback();
-  }
-
   $(document).keydown(function(e) {
     if (e.keyCode < 41) {
       e.preventDefault();

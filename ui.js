@@ -3,12 +3,12 @@ var UI = function(board) {
 
   // defaults
   this.$boardContainer = $('#board');
-  this.playerImg = 'img/hero.png';
+  this.playerImg = 'img/hero.gif';
   this.defaultImg = 'img/transparent.png';
-  this.enemyImg = "img/enemy.png";
+  this.enemyImg = "img/enemy.gif";
   this.wallImg = 'img/transparent.png';
   this.goldImg = 'img/gold.png';
-  this.backgroundImg = 'img/dungeon-crawler2.gif';
+  this.backgroundImg = 'img/dungeon-crawler.gif';
   this.chestImg = '';
   
   this.typeDic = [this.defaultImg,
