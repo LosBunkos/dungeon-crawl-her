@@ -8,22 +8,39 @@
 // board.addAllObjsToBoard();
 // var ui = new UI(board);
 // ui.initBoard();
-handleClicks = function() {
+handleClicks = function(board) {
+
   var keyToDirection = {
-    'w' : 'up',
-    's' : 'down',
+    '37' : 'left',
+    '38' : 'up',
+    '39' : 'right',
+    '40' : 'down',
     'a' : 'left',
-    'd' : 'right'
+    'w' : 'up',
+    'd' : 'right',
+    's' : 'down',
+    'A' : 'left',
+    'W' : 'up',
+    'D' : 'right',
+    'S' : 'down',
+
   }
   var move;
   if (typeof callback == 'function') {
     callback();
   }
-  $(document).keypress(function(e) {
-    move = String.fromCharCode(e.which);
+
+  $(document).keydown(function(e) {
+    if (e.keyCode < 41) {
+      e.preventDefault();
+      console.log(e.which);
+      move = e.keyCode;
+    } else {
+      move = String.fromCharCode(e.keyCode);
+    }
     console.group('keypress');
     console.info('Notice: got keystroke: ' + move + ' (keyboard)');
-    board.player.go(keyToDirection[move]);
+    board.go(board.player, keyToDirection[move]);
     console.groupEnd('keypress');
   });
 }

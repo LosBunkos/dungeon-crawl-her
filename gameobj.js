@@ -2,20 +2,28 @@ var gameObj = function(board, startingPos) {
   this.alive = true;
   this.pos = startingPos;
   this.type = 2;
+  this.score = 0;
+  this.won = false;
   this.go = function(direction){
     board.go(this, direction);
     return true;
   };
 
+  this.updateScore = function(num) {
+    this.score += num;
+    $('#score-number').text(this.score);
+  };
+
   this.die = function() {
     this.alive = false;
-    console.log(this.alive);
+    //console.log(this.alive);
     board.delObj(this);
     $('#ded').text("You have reached\nYour final destination.").css('text-align', 'center');
     // setTimeout(location.reload, 2500);
     $('#refresh').css('display', 'inline-block').on('click', function() {
       location.reload();
     });
+    stopAll();
   };
 
   this.win = function() {
@@ -26,9 +34,12 @@ var gameObj = function(board, startingPos) {
     $('#refresh').text("Play again!").css('display', 'inline-block').on('click', function() {
       location.reload();
     });
+    if(!this.won) {
+      this.updateScore(10000);
+    }
+    this.won = true;
+    stopAll();
   }
-
-  this.autoAct = function(){};
 };
 
  var newWall = function(board, pos, width, height, type) {
@@ -64,7 +75,7 @@ var gameObj = function(board, startingPos) {
 //   var that = this;
 //   this.autoAct = function() {
 //     setInterval(function() {
-//       console.log(that);
+//       //console.log(that);
 //       that.go(direction);
 //     }, speed);
 //   // this.autoAct();
