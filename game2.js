@@ -6,4 +6,5 @@ var renderBoard2 = function() {
   ui2.initBoard();
   board.ui = ui2;
   board2.init();
+  
 }

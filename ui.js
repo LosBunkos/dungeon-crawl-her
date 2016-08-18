@@ -3,16 +3,16 @@ var UI = function(board) {
 
 
   this.$boardContainer = $('#board');
-  this.playerColor = 'img/hero.png';
-  this.defaultColor = 'img/transparent.png';
-  this.enemyColor = "img/enemy.png";
-  this.wallColor = 'img/transparent.png';
-  this.goldColor = 'img/gold.png';
+  this.playerImg = 'img/hero.png';
+  this.defaultImg = 'img/transparent.png';
+  this.enemyImg = "img/enemy.png";
+  this.wallImg = 'img/transparent.png';
+  this.goldImg = 'img/gold.png';
   
-  this.typeDic = [this.defaultColor,
-    this.playerColor, this.enemyColor,
-    this.wallColor, this.defaultColor,
-    this.goldColor];
+  this.typeDic = [this.defaultImg,
+    this.playerImg, this.enemyImg,
+    this.wallImg, this.defaultImg,
+    this.goldImg];
 
   this.imgize = function(string) {
     return '<img src="' + string + '""></img>'
@@ -38,11 +38,11 @@ var UI = function(board) {
     }
     this.$boardContainer.append(tempBoard);
 
-    $('[data-type=1]').html(this.imgize(this.playerColor))
+    $('[data-type=1]').html(this.imgize(this.playerImg))
       .css('z-index', '999');
       
-    $('[data-type=2]').html(this.imgize(this.enemyColor));
-    $('[data-type=5]').html(this.imgize(this.goldColor));
+    $('[data-type=2]').html(this.imgize(this.enemyImg));
+    $('[data-type=5]').html(this.imgize(this.goldImg));
 
 
     $('.square').css('width',((100 / board.width) + '%'))
