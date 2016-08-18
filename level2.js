@@ -91,6 +91,7 @@ var player = new gameObj(board2, {x:0, y:0});
 
   // Chest
   board2.addObj(chest1);
+  board2.addObj(chest2);
 
 
   var mov1 = randomMove(enemy1, 100);
