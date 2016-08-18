@@ -42,7 +42,7 @@ var gameObj = function(board, startingPos) {
       });
     } else {
       $('#refresh').text("Play again").css('display', 'inline-block').on('click', function() {
-        location.reload();
+        cleanBoard(board); flushBoard(); renderBoard1();
       });
       $('#ded').text("You won!").css('text-align', 'center');
     }
@@ -71,26 +71,3 @@ var gameObj = function(board, startingPos) {
       }
     }
   }
-
-// var Projectile = function(board, startingPos, direction, speed) {
-//   this.type = 3;
-//   this.speed = speed;
-//   this.pos = startingPos;
-//   this.direction = direction;
-//   this.go = function(direction){
-//     board.go(this, direction);
-//     return true;
-//   };
-//   this.onCollision = function(obj) {
-//     board.delObj(this);
-//   }
-
-//   var that = this;
-//   this.autoAct = function() {
-//     setInterval(function() {
-//       //console.log(that);
-//       that.go(direction);
-//     }, speed);
-//   // this.autoAct();
-// }
-// }
