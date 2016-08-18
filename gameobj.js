@@ -2,6 +2,7 @@ var gameObj = function(board, startingPos) {
   this.alive = true;
   this.pos = startingPos;
   this.type = 2;
+  this.lvl = 1;
   this.score = 0;
   this.won = false;
   this.go = function(direction){
@@ -10,8 +11,8 @@ var gameObj = function(board, startingPos) {
   };
 
   this.updateScore = function(num) {
-    this.score += num;
-    $('#score-number').text(this.score);
+    score += num;
+    $('#score-number').text(score);
   };
 
   this.die = function() {
@@ -23,22 +24,34 @@ var gameObj = function(board, startingPos) {
     $('#refresh').css('display', 'inline-block').on('click', function() {
       location.reload();
     });
-    stopAll();
+    board.isActive = false;
+    stopAll(intervals);
   };
 
   this.win = function() {
-    // make player invincible
+    // make player invincible without causing errors
+    // if die() is called
     this.die = function(){};
-    $('#ded').text("YOU WON BROOO!!!1").css('text-align', 'center');
     // setTimeout(location.reload, 2500);
-    $('#refresh').text("Play again!").css('display', 'inline-block').on('click', function() {
-      location.reload();
-    });
+
+    if (this.lvl == 1) {
+      $('#refresh').text("Go to level 2!").css('display', 'inline-block').on('click', function() {
+        cleanBoard(board); flushBoard(); renderBoard2();
+
+      $('#ded').text("You won level 1").css('text-align', 'center');
+      });
+    } else {
+      $('#refresh').text("Play again").css('display', 'inline-block').on('click', function() {
+        cleanBoard(board); flushBoard(); renderBoard1();
+      });
+      $('#ded').text("You won!").css('text-align', 'center');
+    }
     if(!this.won) {
       this.updateScore(10000);
     }
     this.won = true;
-    stopAll();
+    board.isActive = false;
+    stopAll(intervals);
   }
 };
 
@@ -58,26 +71,3 @@ var gameObj = function(board, startingPos) {
       }
     }
   }
-
-// var Projectile = function(board, startingPos, direction, speed) {
-//   this.type = 3;
-//   this.speed = speed;
-//   this.pos = startingPos;
-//   this.direction = direction;
-//   this.go = function(direction){
-//     board.go(this, direction);
-//     return true;
-//   };
-//   this.onCollision = function(obj) {
-//     board.delObj(this);
-//   }
-
-//   var that = this;
-//   this.autoAct = function() {
-//     setInterval(function() {
-//       //console.log(that);
-//       that.go(direction);
-//     }, speed);
-//   // this.autoAct();
-// }
-// }

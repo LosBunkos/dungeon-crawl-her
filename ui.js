@@ -1,13 +1,14 @@
 var UI = function(board) {
   this.board = board;
 
-
+  // defaults
   this.$boardContainer = $('#board');
   this.playerImg = 'img/hero.png';
   this.defaultImg = 'img/transparent.png';
   this.enemyImg = "img/enemy.png";
   this.wallImg = 'img/transparent.png';
   this.goldImg = 'img/gold.png';
+  this.backgroundImg = 'img/dungeon-crawler2.gif';
   
   this.typeDic = [this.defaultImg,
     this.playerImg, this.enemyImg,
@@ -27,16 +28,19 @@ var UI = function(board) {
 
 
   this.initBoard = function() {
-    //console.time('ui.initBoard');
+    console.log(this.backgroundImg);
+  this.$boardContainer.css({'background-image' : 'url(' + this.backgroundImg + ')',
+      'background-repeat': 'no-repeat'});
+
     var tempBoard = '' ;
-    this.$boardContainer.empty();
+    $('#board').html('');
 
     for (var i = 0; i < this.board.height; i++) {
       for (var j = 0; j < this.board.width; j++) {
         tempBoard += this.divTemp(j, i, board.board[i][j]);
       }
     }
-    this.$boardContainer.append(tempBoard);
+    this.$boardContainer.html(tempBoard);
 
     $('[data-type=1]').html(this.imgize(this.playerImg))
       .css('z-index', '999');
@@ -60,8 +64,10 @@ var UI = function(board) {
     function removeImg(x,y) {
       // vanilla, for performance
       var toRem = document.getElementById('y-' + y + '-x-' + x);
-      if(typeof toRem == 'object') {
+      try {
         toRem.removeChild(toRem.firstChild);
+      } catch(err) {
+        console.log('caught', err);
       }
     }
 

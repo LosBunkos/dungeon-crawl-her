@@ -71,7 +71,7 @@ button {
   width: 797px;
   height: 600px;
   border-radius: 12px;
-  background: url('img/dungeon-crawler2.gif') no-repeat;
+  /*background: url('img/dungeon-crawler2.gif') no-repeat;*/
   background-size: contain;
   padding-left: 100px;
   padding-right: 40px;
