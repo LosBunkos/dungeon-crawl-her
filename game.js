@@ -1,4 +1,27 @@
 var intervals = [];
+
+var stopAll = function() {
+  intervals.forEach(function(interval) {
+    clearInterval(interval);
+  });
+}
+
+var flushBoard = function() {
+  console.log($('#board'));
+  $('#board').html('');
+}
+
+var cleanBoard = function(board) {
+  stopAll();
+  ui = null;
+  board.gameObjs.forEach(function(obj) {
+    obj = null;
+  });
+  board = null;
+  flushBoard();
+}
+
+
 var renderBoard1 = function() {
   // Set up directions for autoMove
   var dirs1 = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
@@ -28,13 +51,12 @@ var renderBoard1 = function() {
     }, time)
   }
 
-  // Just for testing purposes
   // Board initialization
   var board = new Board(25);
   board.width = 33;
   var ui = new UI(board);
-  board.init();
-  ui.initBoard();
+  // board.init();
+  // ui.initBoard();
   board.ui = ui;
   board.init();
   // ui.initBoard(board);
