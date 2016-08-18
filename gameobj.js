@@ -42,7 +42,7 @@ var gameObj = function(board, startingPos) {
       });
     } else {
       $('#refresh').text("Play again").css('display', 'inline-block').on('click', function() {
-        cleanBoard(board); flushBoard(); renderBoard1();
+        location.reload();
       });
       $('#ded').text("You won!").css('text-align', 'center');
     }
