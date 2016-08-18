@@ -101,7 +101,7 @@ var player = new gameObj(board2, {x:0, y:0});
   var mov5 = randomMove(enemy5, 180, 6);
   var mov6 = randomMove(enemy6, 280, 1);
   var mov7 = autoMove(enemy7, 
-    ['right', 'right', 'right', 'left', 'left', 'left']
+    ['right', 'right', 'right', 'right', 'left', 'left', 'left', 'left', 'left']
   ,200);
 
   intervals2.push(mov1);
