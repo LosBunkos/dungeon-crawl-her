@@ -9,11 +9,12 @@ var UI = function(board) {
   this.wallImg = 'img/transparent.png';
   this.goldImg = 'img/gold.png';
   this.backgroundImg = 'img/dungeon-crawler2.gif';
+  this.chestImg = '';
   
   this.typeDic = [this.defaultImg,
     this.playerImg, this.enemyImg,
     this.wallImg, this.defaultImg,
-    this.goldImg];
+    this.goldImg, this.chestImg];
 
   this.imgize = function(string) {
     return '<img src="' + string + '""></img>'

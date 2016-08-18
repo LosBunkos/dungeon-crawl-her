@@ -7,7 +7,7 @@ var renderBoard2 = function() {
 
   $('#board').css({
     'padding-left' : '40px',
-    'padding-right': '20px',
+    'padding-right': '0',
     'padding-top': '100px', 
     'padding-bottom': '20px', 
   });
@@ -19,6 +19,7 @@ var renderBoard2 = function() {
   ui2.wallImg = 'img/transparent.png';
   ui2.goldImg = 'img/gold.png';
   ui2.backgroundImg = 'img/dc-level-2.png';
+  ui2.chestImg = '/img/chest.png'
 
   // init ui
   board2.ui = ui2;
@@ -44,6 +45,10 @@ var player = new gameObj(board2, {x:0, y:0});
   var gold4 = new gameObj(board2, {x:15, y:20});
   gold4.type = 5;
 
+  // Create Chest
+  var chest1 = new gameObj(board2, {x:4, y:22});
+  chest1.type = 6;
+
   // Create Walls
   newWall(board2, {x:27, y:17}, 1, 8);
   newWall(board2, {x:7, y:17}, 1, 8);
@@ -68,6 +73,10 @@ var player = new gameObj(board2, {x:0, y:0});
   board2.addObj(gold2);
   board2.addObj(gold3);
   board2.addObj(gold4);
+
+  // Chest
+  board2.addObj(chest1);
+
 
   var mov1 = randomMove(enemy1, 100);
   var mov2 = randomMove(enemy2, 245, 10);

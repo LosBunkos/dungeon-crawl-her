@@ -27,7 +27,7 @@ var flushBoard = function() {
 
 var cleanBoard = function(board) {
   stopAll(intervals);
-  ui = null;
+  // ui = null;
   // board.gameObjs.splice(0, board.gameObjs.length);
   board.gameObjs.forEach(function(obj) {
     board.delObj(obj);

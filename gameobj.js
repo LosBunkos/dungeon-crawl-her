@@ -40,9 +40,9 @@ var gameObj = function(board, startingPos) {
 
       $('#ded').text("You won level 1").css('text-align', 'center');
       });
-    } else {
+    } else if (this.lvl == 2){
       $('#refresh').text("Play again").css('display', 'inline-block').on('click', function() {
-        cleanBoard(board); flushBoard(); renderBoard1();
+        location.reload();
       });
       $('#ded').text("You won!").css('text-align', 'center');
     }
