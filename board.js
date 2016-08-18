@@ -12,6 +12,7 @@ var Board = function(width, ui, height) {
   this.gameObjs = [];
   this.initialized = false;
   this.currID = 0;
+  this.isActive = true;
 
   // Methods
   this._generate = function() {

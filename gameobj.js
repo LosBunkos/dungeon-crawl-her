@@ -23,7 +23,8 @@ var gameObj = function(board, startingPos) {
     $('#refresh').css('display', 'inline-block').on('click', function() {
       location.reload();
     });
-    stopAll();
+    board.isActive = false;
+    stopAll(intervals);
   };
 
   this.win = function() {
@@ -38,7 +39,8 @@ var gameObj = function(board, startingPos) {
       this.updateScore(10000);
     }
     this.won = true;
-    stopAll();
+    board.isActive = false;
+    stopAll(intervals);
   }
 };
 

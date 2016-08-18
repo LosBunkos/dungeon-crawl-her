@@ -1,64 +1,62 @@
 var intervals = [];
 
-var stopAll = function() {
+var stopAll = function(intervals) {
   intervals.forEach(function(interval) {
     clearInterval(interval);
   });
 }
 
 var flushBoard = function() {
-  console.log($('#board'));
-  $('#board').html('');
+  // $('#board').empty();
+  // $('.square > img').remove();
+  $(document).remove('.square');
 }
 
 var cleanBoard = function(board) {
-  stopAll();
+  stopAll(intervals);
   ui = null;
-  board.gameObjs.forEach(function(obj) {
-    obj = null;
-  });
-  board = null;
+  board.gameObjs.splice(0, board.gameObjs.length);
+  board.isActive = false;
+  // board = null;
   flushBoard();
 }
 
+var autoMove = function(enemy, dirs, time) {
+  var i = 0;
+  return setInterval(function() {
+    enemy.go(dirs[i % dirs.length]);
+    i++;
+  }, time);
+}
+var randomMove = function(enemy, time, changeEvery) {
+  if (typeof changeEvery === 'undefined') {
+    changeEvery = 2;
+  }
+  var i = 0;
+  var dir = '';
+  return setInterval(function() {
+    var dirs = ['up', 'down', 'right', 'left'];
+    if (i % changeEvery == 0) {
+      var num = Math.floor(Math.random() * 4);
+      dir = dirs[num];
+    }
+    enemy.go(dir);
+    i++;
+  }, time)
+}
+// Board initialization
+var board = new Board(25);
+board.width = 33;
+var ui = new UI(board);
+board.ui = ui;
+board.init();
 
 var renderBoard1 = function() {
   // Set up directions for autoMove
   var dirs1 = ['up', 'right', 'right', 'down', 'down', 'left', 'left', 'up'];
   var dirs2 = ['up', 'right', 'down', 'down', 'down', 'left', 'up', 'up'];
 
-  var autoMove = function(enemy, dirs, time) {
-    var i = 0;
-    return setInterval(function() {
-      enemy.go(dirs[i % dirs.length]);
-      i++;
-    }, time);
-  }
-  var randomMove = function(enemy, time, changeEvery) {
-    if (typeof changeEvery === 'undefined') {
-      changeEvery = 2;
-    }
-    var i = 0;
-    var dir = '';
-    return setInterval(function() {
-      var dirs = ['up', 'down', 'right', 'left'];
-      if (i % changeEvery == 0) {
-        var num = Math.floor(Math.random() * 4);
-        dir = dirs[num];
-      }
-      enemy.go(dir);
-      i++;
-    }, time)
-  }
 
-  // Board initialization
-  var board = new Board(25);
-  board.width = 33;
-  var ui = new UI(board);
-  // board.init();
-  // ui.initBoard();
-  board.ui = ui;
-  board.init();
   // ui.initBoard(board);
 
   // Create Player

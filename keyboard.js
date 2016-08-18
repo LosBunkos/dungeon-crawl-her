@@ -15,10 +15,12 @@ handleClicks = function(board) {
     '38' : 'up',
     '39' : 'right',
     '40' : 'down',
+
     'a' : 'left',
     'w' : 'up',
     'd' : 'right',
     's' : 'down',
+
     'A' : 'left',
     'W' : 'up',
     'D' : 'right',
@@ -40,7 +42,9 @@ handleClicks = function(board) {
     }
     console.group('keypress');
     console.info('Notice: got keystroke: ' + move + ' (keyboard)');
-    board.go(board.player, keyToDirection[move]);
-    console.groupEnd('keypress');
+    if (!board.player.won && board.isActive) {
+      board.go(board.player, keyToDirection[move]);
+    }
+      console.groupEnd('keypress');
   });
 }
