@@ -19,7 +19,12 @@ var renderBoard2 = function() {
   ui2.wallImg = 'img/transparent.png';
   ui2.goldImg = 'img/gold.png';
   ui2.backgroundImg = 'img/dc-level-2.gif';
-  ui2.chestImg = '/img/chest.png'
+  ui2.chestImg = 'img/chest.png';
+
+  ui2.typeDic = [ui2.defaultImg,
+    ui2.playerImg, ui2.enemyImg,
+    ui2.wallImg, ui2.defaultImg,
+    ui2.goldImg, ui2.chestImg];
 
   // init ui
   board2.ui = ui2;
@@ -34,6 +39,8 @@ var player = new gameObj(board2, {x:0, y:0});
   var enemy1 = new gameObj(board2, {x:5, y:7});
   var enemy2 = new gameObj(board2, {x:5, y:15});
   var enemy3 = new gameObj(board2, {x:25, y:3});
+  var enemy4 = new gameObj(board2, {x:18, y:8});
+  var enemy5 = new gameObj(board2, {x:23, y:15});
 
   // create gold
   var gold1 = new gameObj(board2, {x:2, y:2});
@@ -64,6 +71,8 @@ var player = new gameObj(board2, {x:0, y:0});
   board2.addObj(enemy1);
   board2.addObj(enemy2);
   board2.addObj(enemy3);
+  board2.addObj(enemy4);
+  board2.addObj(enemy5);
 
   // Player
   board2.addObj(player);
@@ -79,12 +88,16 @@ var player = new gameObj(board2, {x:0, y:0});
 
 
   var mov1 = randomMove(enemy1, 100);
-  var mov2 = randomMove(enemy2, 245, 10);
+  var mov2 = randomMove(enemy2, 245, 5);
   var mov3 = randomMove(enemy3, 220, 4);
+  var mov4 = randomMove(enemy4, 180, 2);
+  var mov5 = randomMove(enemy5, 200, 6);
 
   intervals2.push(mov1);
   intervals2.push(mov2);
   intervals2.push(mov3);
+  intervals2.push(mov4);
+  intervals2.push(mov5);
 
   handleClicks(board2);
 
