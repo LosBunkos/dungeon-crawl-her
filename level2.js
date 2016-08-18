@@ -15,10 +15,10 @@ var renderBoard2 = function() {
   // change default imgs
   ui2.playerImg = 'img/hero.png';
   ui2.defaultImg = 'img/transparent.png';
-  ui2.enemyImg = "img/enemy.png";
+  ui2.enemyImg = "img/enemy2.png";
   ui2.wallImg = 'img/transparent.png';
   ui2.goldImg = 'img/gold.png';
-  ui2.backgroundImg = 'img/dc-level-2.png';
+  ui2.backgroundImg = 'img/dc-level-2.gif';
 
   // init ui
   board2.ui = ui2;
